@@ -1,7 +1,7 @@
 export const siteContent = {
   meta: {
     title: "LANGUAGE WATCH Foundation (LWF)",
-    description: "LANGUAGE WATCH Foundation (LWF), languagewatchfoundation, language watch foundation, Accra, First PhD in Twi, LWF. We are linguists, language professionals, and communication experts. Dr. Nana Anima Wiafe-Akenten, an Akan Linguist, leads our team.",
+    description: "LANGUAGE WATCH Foundation (Kasa wↄ Tumi – Words are Powerful) (#Kasadɛ, Kasahwam, #YԑnhwԑYԑnKasayie) is an association of professionals and practitioners of language, linguists and communication experts. This body understands and believes strongly that the spoken word is powerful and must be handled carefully, in both interpersonal communication and in public settings, especially in media discourse. Words indeed can break, kill, make and unmake. LWF therefore embarks on programs that draw attention to the power of the spoken word. Our outreach programs promote and encourage the use of decorous and polite language, especially in media, political, religious, domestic, health care, business settings and in all aspects of communication for national peace, stability and cohesion.",
     keywords: "Language Watch, LWF, Twi, Akan, Linguist, Ghana, Accra"
   },
 
@@ -17,43 +17,45 @@ export const siteContent = {
   hero: {
     title: "LANGUAGE WATCH Foundation (LWF)",
     subtitle: "",
-    description: "We are linguists, language professionals, and communication experts dedicated to promoting decorous and polite language use.",
+    description: "We are linguists, cultural activists, language professionals, media and communication experts dedicated to promoting decorous and polite language use.",
     ctaText: "Learn More About Us",
     backgroundImage: "/images/banner.jpg"
   },
 
   about: {
     title: "About Us",
-    subtitle: "Who We Are",
-    description: "LANGUAGE WATCH Foundation (LWF) is an independent, non-governmental organization based in Accra, Ghana, and was founded in 2016. Members of this association include; Linguists, professionals & practitioners of language, and communication experts. The team is led by Dr. Nana Anima Wiafe-Akenten, an Akan Linguist (the First PhD holder in Twi, GHLS). She is the founder and Chief Executive Officer (CEO).",
-
-    longDescription: "This body understands and believes strongly that 'words' both the written and the spoken words are very powerful and must be handled carefully, in both interpersonal communication and in public settings, especially in media discourse. Words indeed can break, make or unmake. Like a knife in a doctors' hand; words can save life and can also kill. Thus, the need to be mindful of how sensitive and delicate words are and as such we use them properly/appropriately and in the right context/setting.",
-
-    programs: "LANGUAGE WATCH Foundation (LWF) therefore embarks on programs that draw attention to the power of both the written and spoken words, especially; The LWF Outreach program. We also embark on training and seminars in speaking, reading and writing skills in our indigenous languages; #Suawokasa and #kasayie Campaign (for the young, youth and adult). We also offer individual and personal coaching programs on Voice & Speech, Speaking Skills (for personal & public) and Communicative Competence Skills.",
-
-    center: "We therefore have an affiliated language center (Nananom language & media center) where one can acquire proficiency, fluency, public speaking skills and communicative competence in our Ghanaian languages (Akan, Ga, Ewe, Dagomba, Hausa, etc.) and in English as well. Also, available at the teaching and learning support center are translation, transcription, interpretation, creative writing services, etc.",
-
-    tabs: {
-      objectives: {
-        title: "Our Objectives",
-        content: [
-          "Draw attention to power of the spoken words in general.",
-          "Call attention to the effects of hate and inflammatory speeches such as, insults/invectives, incitement, defamation, bias and ethnocentric statements.",
-          "Encourage the media to discourage hate speeches and vulgar language, rather than reinforce them.",
-          "Make interventions and draw speakers' attention to effects of such negative speeches on listeners' emotions.",
-          "Organize workshops, seminars and fora on appropriate, decorous and polite use of language."
-        ]
+    description: "LanguageWatch Foundation (LWF) is an association of professionals and practitioners of language, linguists, media and communication experts. This body understands and believes strongly that the spoken word is powerful and must be handled carefully, in both interpersonal communication and in public settings, especially in media discourse. Words indeed can break, kill, make and unmake. LWF therefore embarks on programs that draw attention to the power of the spoken word. Our outreach programs promote and encourage the use of decorous and polite language, especially in media, political, religious, domestic, health care, business settings and in all aspects of communication for national peace, stability and cohesion.",
+    objectives: [
+      "Highlight the power and impact of spoken words.",
+      "Raise awareness about the dangers of hate speech and inflammatory language.",
+      "Encourage media to promote respectful and positive language.",
+      "Intervene and educate on the emotional effects of negative language.",
+      "Host workshops and seminars on polite and effective communication."
+    ],
+    mission: "LWF mission is to objectively observe language use in the media, political and other public settings. Draw attention to harmful effects of negative words, and seek ways to make speakers understand and appreciate the need to avoid inciteful utterances.",
+    vision: "To become the leading language experts and practitioners who have become a household name for propagating polite speeches and decorous language in domestic, media, political, religious, health care, business and other public settings.",
+    activities: [
+      {
+        title: "Speaking Club (#kasadɛ, Kasahwam, #YԑnhwԑYԑnKasaYie)",
+        description: "Programs that draw attention to power of the spoken words. Organizes reading, writing & speaking skills workshop for its members."
       },
-      mission: {
-        title: "Our Mission",
-        content: "LANGUAGE WATCH Foundation (LWF)'s mission is to objectively observe language use in the media, political and other public settings. Draw attention to harmful effects of negative words, and seek ways to make speakers understand and appreciate the need to avoid inflammatory and inciteful utterances."
+      {
+        title: "NAWA Language & Culture Club - Efie Nimdeɛ (Children & Youth Club)",
+        description: "Reading and writing activities that promote the learning of their language (mother tongue), cultural values, etiquettes, politeness strategies and speaking skills in general."
       },
-      vision: {
-        title: "Our Vision",
-        content: "To become the leading language experts and practitioners who have become a household name for propagating polite speeches and decorous language in domestic, media, political, religious, health care, business and other public settings."
+      {
+        title: "NAWA Public Lectures",
+        description: "Research, Publications, Workshops, Public Lectures (Language use in media, politics, law court, church, chief palace, health care, business etc.)"
+      },
+      {
+        title: "Skills/Training – Communicative Competence",
+        description: "Public Speaking, Political & Socio-Cultural Context, Effective Communication, Voice & Speech (Strategic & Effective Communication Consult – SEFFCOM CONSULT)."
+      },
+      {
+        title: "KASA - Word Therapy & Peace Outreach",
+        description: "Mediation, Advice, Counseling Services on sensitive/delicate utterances, effective communication in marriage & family life, workplaces, customer services/relations etc."
       }
-    },
-    image: "/images/about.jpg"
+    ]
   },
 
   founder: {
@@ -121,39 +123,77 @@ export const siteContent = {
     }
   ],
 
-  team: [
-    {
+  team: {
+    founder: {
       name: "Dr. Nana Anima Wiafe-Akenten",
-      slug: "nana-anima-wiafe-akenten",
-      role: "Founder & CEO",
-      image: "/images/doc.jpeg",
-      bio: "First PhD holder in Twi, GHLS. Leading expert in Akan linguistics.",
-      social: {
-        linkedin: "#",
-        twitter: "#"
-      }
+      title: "Founder & CEO",
+      bio: "First PhD holder in Twi - GHLS. Language, culture, media & communication expert, specialized in Ethnography of Communication - Media Discourse, Socio-Political & Socio-Cultural Discourse, Oral Literature & Written Literature, Cultural Studies, Pragmatics, Sociolinguistics, Translation & Interpretation, Voice & Speech, Effective Communication.",
+      contact: "0277 561 588"
     },
-    // Add more team members here, e.g.
-    // {
-    //   name: "John Doe",
-    //   slug: "john-doe",
-    //   role: "Language Specialist",
-    //   image: "/images/john.jpg",
-    //   bio: "Expert in Ewe language and translation.",
-    //   social: { linkedin: "#", twitter: "#" }
-    // },
-  ],
+    advisoryBoard: [
+      { name: "Professor Edwin Clifford Mensah", role: "Associate Dean & Professor of Microeconomics, University of North Carolina, Pembroke" },
+      { name: "Professor Emmanuel Ohene Afoakwa", role: "Chief of Fiapre traditional Area and Vice Chancellor of Ghana Communication Technology University" },
+      { name: "Dr. Reginald Duah", role: "Linguistics Department, University of Ghana, Legon" },
+      { name: "Okyeame Asumadu", role: "Chief Linguist of Bompata Ɔmanhene" },
+      { name: "Dr. Henry Debrah", role: "Management & Corporate Finance Expert" },
+      { name: "Rev. Minister Eric Osei-Assibey", role: "Power in the Word Advocate, Youth Welfare Activist and Educationist" },
+      { name: "Prof. Gladys Ansah", role: "Language and Communication Expert, University of Ghana, Legon" },
+      { name: "Lawyer Afia Serwaa Essandoh", role: "Linguist & Law Lecturer, University of Professional Studies, Accra" },
+      { name: "Mrs Doreen Baffoe", role: "Marketing and Customer Service Expert" },
+      { name: "Mrs. Rhoda Appiah", role: "Communication and Public Relation Expert" },
+      { name: "Mrs Ellen Boatemaa Denteh", role: "Chartered Accountant" }
+    ],
+    associates: [
+      { name: "Prof. Gladys Ansah", role: "Language and Communication Expert, University of Ghana, Legon" },
+      { name: "Reverend Cassandra Ackah", role: "Psychosocial & Certified Marriage Counselor, C.E.O of Cassy Productions, Ghana" },
+      { name: "Dr. Reginald Duah", role: "University of Ghana, Legon" },
+      { name: "Dr. Kwasi Adomako", role: "Language Expert/Linguist, University of Education, Winneba, College of Languages Education-Ajumako Campus" },
+      { name: "Dr. Amoh", role: "Language Expert/Linguist, University of Cape Coast" },
+      { name: "Mr. Bosiwa", role: "Language Expert/Linguist, University of Cape Coast" },
+      { name: "Lawyer Afia Serwaa Essandoh", role: "Linguist & Law Lecturer, University of Professional Studies, Accra" },
+      { name: "Mr. Forson Adjei", role: "Language and Communication Expert, University of Science and Technology, Kumase" },
+      { name: "Mr. Emmanuel Antwi Fordjour", role: "Language and Communication Expert, University of Science and Technology, Kumase" },
+      { name: "Dr. Daniel Appia-Adjei", role: "School of Performing Arts, University of Ghana, Legon" },
+      { name: "Dr. Felicia Owusu-Ansah", role: "School of Performing Arts, University of Ghana, Legon" },
+      { name: "Ms Helena Amoako", role: "C.E.O., Speakrite International (Management & Business Administration Expert)" },
+      { name: "Dr. Alvin Amoah", role: "University of Ghana, Legon" }
+    ],
+    outreach: {
+      manager: "Dr. Alvin Amoah",
+      media: ["Mr. Franklin Oteng-Appau", "Mr. Ebenezer Ayeh", "Ms. Nana Adwoa Wiafe-Akenten", "Ms Narkie Adjirackor"]
+    },
+    it: ["Mr. Isaac Kumi"],
+    research: ["Ms Victoria Boafo", "Mr. Mathias Sackitey", "Mrs. Dorothy Sakyi", "Mr. Cosmos Afram", "Mr. Clinsman Odoom", "Mr Barouk Eshun", "Mr. Yakubu Mohammed", "Mr. Nyame"],
+    translation: ["Ms Victoria Boafo", "Mr. Cosmos Afram", "Mr. Mathias Sackitey"],
+    regional: {
+      "Greater Accra": ["Mr. Nicholas Agyei Atta"],
+      "Eastern Region": ["Mr. Jacob Owiredu"],
+      "Asante Region": ["Eugenia Attaa Asare", "Kwabena Badu Amponsa"],
+      "Bono & Ahafo Region": ["Mrs Ethel Adusei"],
+      "Northern Region": ["Mr. Yakubu Mohammed"],
+      "Volta Region": ["Mr. Francis Vifa"]
+    },
+    international: {
+      "USA": ["Mrs Mary Boadi"],
+      "UK": ["Mrs Jennifer Lawson", "Mr. Nathaniel Arthur (Nat Sankɔfa Tete Arthur Fame)"],
+      "Belgium": ["Nana Baafoɔ Arko Akwa I"],
+      "Spain": ["Mrs Gloria Gibbah Cudjoe"]
+    }
+  },
 
   contact: {
-    address: "Accra, Ghana",
-    phone: "+233 XXX XXX XXX",
-    email: "info@kasatumi.org",
+    phone: "+233 0302 917 227",
+    mobile: ["+233 0277 561 588", "+233 0542 997 077"],
+    email: "languagewatch@gmail.com",
+    website: "languagewatch.org",
+    location: "Ayimensa-Kweiman Road, off MBC pharmacy. First Mango Farm junction, adjacent the Wind Mill. Onyame Na Ayԑ House.",
+    address: "P. O. Box LG 877, Legon-Accra.",
     social: {
-      facebook: "#",
-      twitter: "#",
-      instagram: "#",
-      linkedin: "#",
-      youtube: "#"
+      facebook: "",
+      twitter: "",
+      instagram: "",
+      linkedin: "",
+      youtube: ""
     }
   },
 

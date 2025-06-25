@@ -102,6 +102,11 @@
     transform: translateZ(0);
     will-change: transform;
   }
+
+  .stylish-title {
+    font-family: 'Raleway', 'Inter', 'Segoe UI', 'Arial', sans-serif;
+    letter-spacing: -0.01em;
+  }
 }
 
 @layer utilities {

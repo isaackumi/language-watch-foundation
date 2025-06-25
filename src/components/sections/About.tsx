@@ -3,197 +3,254 @@
 import { siteContent } from '@/data/content';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BookOpen, Building, Target, ChevronRight, Loader2 } from 'lucide-react';
+import { BookOpen, Users, Award, Target, Lightbulb, User, ChevronRight, Quote, CheckCircle, MessageSquare, Globe, Heart, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function About() {
-    const [expandedContent, setExpandedContent] = useState<string | null>(null);
+    const [hoveredObjective, setHoveredObjective] = useState<number | null>(null);
     const [isLoading, setIsLoading] = useState(false);
 
-    const handleReadMore = async (content: string) => {
-        setIsLoading(true);
-        // Simulate loading for better UX
-        await new Promise(resolve => setTimeout(resolve, 300));
-        setExpandedContent(content);
-        setIsLoading(false);
+    // Animation variants
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.3
+            }
+        }
     };
 
-    const handleCloseModal = () => {
-        setExpandedContent(null);
-    };
-
-    const cardVariants = {
+    const itemVariants = {
         hidden: { opacity: 0, y: 20 },
-        visible: (i: number) => ({
+        visible: {
             opacity: 1,
             y: 0,
             transition: {
-                delay: i * 0.2,
                 duration: 0.5,
                 ease: "easeOut"
             }
-        })
+        }
     };
 
+    const objectives = [
+        {
+            icon: Target,
+            title: "Promote Decorous Language",
+            description: "Foster respectful and appropriate language use in media and public discourse",
+            color: "from-blue-500 to-blue-600",
+            stats: "100+ Media Engagements"
+        },
+        {
+            icon: Globe,
+            title: "Cultural Awareness",
+            description: "Enhance understanding of cultural communication and language nuances",
+            color: "from-green-500 to-green-600",
+            stats: "50+ Cultural Events"
+        },
+        {
+            icon: Heart,
+            title: "Peace & Unity",
+            description: "Promote national peace and cohesion through mindful communication",
+            color: "from-red-500 to-red-600",
+            stats: "1000+ Community Members"
+        },
+        {
+            icon: BookOpen,
+            title: "Language Education",
+            description: "Provide comprehensive training in effective communication skills",
+            color: "from-purple-500 to-purple-600",
+            stats: "200+ Training Sessions"
+        },
+        {
+            icon: MessageSquare,
+            title: "Professional Excellence",
+            description: "Develop expertise in public speaking and media communication",
+            color: "from-yellow-500 to-yellow-600",
+            stats: "500+ Professionals Trained"
+        }
+    ];
+
     return (
-        <section id="about" className="py-24 bg-gradient-to-b from-gray-50 to-white">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="about" className="py-24 bg-gradient-to-b from-primary-50/60 to-white relative overflow-hidden">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-5">
+                <div className="absolute inset-0" style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+                }} />
+            </div>
+
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+                {/* Animated, gradient-underlined section header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                     className="text-center mb-20"
                 >
-                    <h2 className="text-4xl sm:text-5xl font-display font-bold text-dark-500 mb-6">
-                        {siteContent.about.title}
-                    </h2>
-                    <div className="w-24 h-1 bg-primary-500 mx-auto mb-8"></div>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                        {siteContent.about.description}
-                    </p>
+                    <motion.h2
+                        className="text-4xl sm:text-5xl font-extrabold tracking-tight stylish-title mb-6 flex items-center justify-center gap-2 relative"
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                    >
+                        <motion.div
+                            animate={{ rotate: [0, 10, -10, 0] }}
+                            transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+                        >
+                            <Lightbulb className="w-8 h-8 text-primary-500" />
+                        </motion.div>
+                        <span className="relative inline-block">
+                            About Us
+                            <motion.span
+                                className="absolute left-0 -bottom-1 w-full h-2 bg-gradient-to-r from-primary-300 to-primary-500 rounded-full"
+                                animate={{
+                                    scale: [1, 1.1, 1],
+                                    opacity: [0.5, 1, 0.5]
+                                }}
+                                transition={{ duration: 2, repeat: Infinity }}
+                            />
+                        </span>
+                    </motion.h2>
+                    <motion.div
+                        className="w-24 h-1 bg-gradient-to-r from-primary-400 to-primary-600 mx-auto mb-8 rounded-full"
+                        animate={{
+                            scale: [1, 1.2, 1],
+                            opacity: [0.5, 1, 0.5]
+                        }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                    />
+                    <motion.p
+                        className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed text-justify"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.4 }}
+                    >
+                        <span className="float-left text-5xl font-bold text-primary-500 mr-3 leading-none select-none" style={{ fontFamily: 'serif' }}>
+                            {siteContent.about.description.charAt(0)}
+                        </span>
+                        {siteContent.about.description.slice(1)}
+                    </motion.p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                        className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl group"
-                    >
-                        <Image
-                            src={siteContent.about.image}
-                            alt="About LANGUAGE WATCH Foundation (LWF)"
-                            fill
-                            className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: 0.4 }}
-                        className="space-y-8"
-                    >
-                        <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-                            <h3 className="text-2xl font-display font-semibold text-dark-500 mb-4">
-                                {siteContent.about.tabs.mission.title}
+                {/* Objectives Grid */}
+                <motion.div
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                >
+                    {objectives.map((objective, index) => (
+                        <motion.div
+                            key={index}
+                            variants={itemVariants}
+                            className="relative bg-white/70 backdrop-blur-lg rounded-2xl shadow-xl p-8 flex flex-col items-center justify-center group overflow-hidden hover:shadow-2xl transition-all duration-300"
+                            onHoverStart={() => setHoveredObjective(index)}
+                            onHoverEnd={() => setHoveredObjective(null)}
+                        >
+                            <motion.div
+                                className={`absolute inset-0 bg-gradient-to-br ${objective.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
+                                animate={{
+                                    scale: hoveredObjective === index ? 1.1 : 1,
+                                    rotate: hoveredObjective === index ? 5 : 0
+                                }}
+                                transition={{ duration: 0.3 }}
+                            />
+                            <motion.div
+                                animate={{
+                                    scale: hoveredObjective === index ? 1.2 : 1,
+                                    rotate: hoveredObjective === index ? 10 : 0
+                                }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                <objective.icon className="w-16 h-16 text-primary-200 absolute right-4 top-4 opacity-20 group-hover:opacity-30 transition-all duration-300" />
+                            </motion.div>
+                            <h3 className="text-2xl font-extrabold stylish-title text-primary-600 mb-4 group-hover:underline group-hover:decoration-primary-400 group-hover:underline-offset-8 transition-all duration-300">
+                                {objective.title}
                             </h3>
-                            <p className="text-gray-600 leading-relaxed">
-                                {siteContent.about.tabs.mission.content}
+                            <p className="text-gray-700 text-justify leading-relaxed mb-4">
+                                {objective.description}
                             </p>
-                        </div>
+                            <motion.div
+                                className="text-sm text-primary-600 font-semibold"
+                                animate={{
+                                    y: hoveredObjective === index ? -5 : 0
+                                }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                {objective.stats}
+                            </motion.div>
+                        </motion.div>
+                    ))}
+                </motion.div>
 
-                        <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-                            <h3 className="text-2xl font-display font-semibold text-dark-500 mb-4">
-                                {siteContent.about.tabs.objectives.title}
-                            </h3>
-                            <ul className="space-y-4">
-                                {siteContent.about.tabs.objectives.content.map((objective: string, index: number) => (
-                                    <motion.li
-                                        key={index}
-                                        initial={{ opacity: 0, x: -20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: index * 0.1 }}
-                                        className="flex items-start group"
-                                    >
-                                        <div className="flex-shrink-0 w-6 h-6 bg-primary-500 rounded-full flex items-center justify-center text-white mr-3 mt-1 group-hover:scale-110 transition-transform duration-300">
-                                            {index + 1}
-                                        </div>
-                                        <p className="text-gray-600 group-hover:text-gray-800 transition-colors duration-300">{objective}</p>
-                                    </motion.li>
-                                ))}
-                            </ul>
-                        </div>
+                {/* Mission & Vision */}
+                <motion.div
+                    className="grid md:grid-cols-2 gap-8 mb-16"
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                >
+                    <motion.div
+                        variants={itemVariants}
+                        className="relative bg-white/70 backdrop-blur-lg rounded-2xl shadow-xl p-8 flex flex-col items-center justify-center group overflow-hidden hover:shadow-2xl transition-all duration-300"
+                    >
+                        <motion.div
+                            animate={{ rotate: [0, 5, -5, 0] }}
+                            transition={{ duration: 4, repeat: Infinity }}
+                        >
+                            <Award className="w-16 h-16 text-primary-200 absolute right-4 top-4 opacity-20 group-hover:scale-110 group-hover:opacity-30 transition-all duration-300" />
+                        </motion.div>
+                        <h3 className="text-2xl font-extrabold stylish-title text-primary-600 mb-4 group-hover:underline group-hover:decoration-primary-400 group-hover:underline-offset-8 transition-all duration-300">
+                            Mission Statement
+                        </h3>
+                        <p className="text-gray-700 text-justify leading-relaxed">
+                            {siteContent.about.mission}
+                        </p>
                     </motion.div>
-                </div>
 
+                    <motion.div
+                        variants={itemVariants}
+                        className="relative bg-white/70 backdrop-blur-lg rounded-2xl shadow-xl p-8 flex flex-col items-center justify-center group overflow-hidden hover:shadow-2xl transition-all duration-300"
+                    >
+                        <motion.div
+                            animate={{ rotate: [0, -5, 5, 0] }}
+                            transition={{ duration: 4, repeat: Infinity }}
+                        >
+                            <Lightbulb className="w-16 h-16 text-primary-200 absolute right-4 top-4 opacity-20 group-hover:scale-110 group-hover:opacity-30 transition-all duration-300" />
+                        </motion.div>
+                        <h3 className="text-2xl font-extrabold stylish-title text-primary-600 mb-4 group-hover:underline group-hover:decoration-primary-400 group-hover:underline-offset-8 transition-all duration-300">
+                            Our Vision
+                        </h3>
+                        <p className="text-gray-700 text-justify leading-relaxed">
+                            {siteContent.about.vision}
+                        </p>
+                    </motion.div>
+                </motion.div>
+
+                {/* Call to Action */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.6 }}
-                    className="mt-20"
+                    className="text-center"
                 >
-                    <h3 className="text-3xl font-display font-semibold text-dark-500 text-center mb-12">
-                        Our Programs
-                    </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {[
-                            { icon: BookOpen, title: "Language Training", content: siteContent.about.programs },
-                            { icon: Building, title: "Our Center", content: siteContent.about.center },
-                            { icon: Target, title: "Vision", content: siteContent.about.tabs.vision.content }
-                        ].map((program, index) => (
-                            <motion.div
-                                key={program.title}
-                                custom={index}
-                                variants={cardVariants}
-                                initial="hidden"
-                                animate="visible"
-                                className="group bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                            >
-                                <div className="p-4 bg-primary-50 rounded-xl w-16 h-16 flex items-center justify-center mb-6 group-hover:bg-primary-500 transition-colors duration-300">
-                                    <program.icon className="h-8 w-8 text-primary-500 group-hover:text-white transition-colors duration-300" />
-                                </div>
-                                <h4 className="text-xl font-display font-semibold text-dark-500 mb-4 group-hover:text-primary-500 transition-colors duration-300">
-                                    {program.title}
-                                </h4>
-                                <p className="text-gray-600 leading-relaxed line-clamp-3">
-                                    {program.content}
-                                </p>
-                                <button
-                                    onClick={() => handleReadMore(program.content)}
-                                    className="mt-4 inline-flex items-center text-primary-500 hover:text-primary-600 font-medium group-hover:text-primary-600 transition-colors duration-300"
-                                >
-                                    Read More
-                                    <ChevronRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
-                                </button>
-                            </motion.div>
-                        ))}
-                    </div>
+                    <Link
+                        href="/about"
+                        className="inline-flex items-center gap-2 px-8 py-4 rounded-md bg-primary-600 text-white font-semibold shadow-lg hover:bg-primary-700 transition-colors duration-300 group"
+                    >
+                        <span>Learn More About Us</span>
+                        <motion.div
+                            animate={{ x: [0, 5, 0] }}
+                            transition={{ duration: 1.5, repeat: Infinity }}
+                        >
+                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        </motion.div>
+                    </Link>
                 </motion.div>
             </div>
-
-            <AnimatePresence>
-                {expandedContent && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
-                        onClick={handleCloseModal}
-                    >
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.9 }}
-                            className="bg-white rounded-2xl p-8 max-w-2xl w-full max-h-[80vh] overflow-y-auto"
-                            onClick={e => e.stopPropagation()}
-                        >
-                            <div className="flex justify-between items-start mb-6">
-                                <h3 className="text-2xl font-display font-semibold text-dark-500">Program Details</h3>
-                                <button
-                                    onClick={handleCloseModal}
-                                    className="text-gray-500 hover:text-gray-700 transition-colors duration-300 p-2 hover:bg-gray-100 rounded-full"
-                                >
-                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
-                                </button>
-                            </div>
-                            <p className="text-gray-600 leading-relaxed">{expandedContent}</p>
-                        </motion.div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-
-            {isLoading && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-                    <div className="bg-white p-8 rounded-2xl flex items-center space-x-4">
-                        <Loader2 className="w-8 h-8 text-primary-500 animate-spin" />
-                        <span className="text-gray-600">Loading...</span>
-                    </div>
-                </div>
-            )}
         </section>
     );
 } 
