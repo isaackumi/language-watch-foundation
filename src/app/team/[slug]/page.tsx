@@ -2,8 +2,9 @@ import { siteContent } from '@/data/content';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
-export default function TeamMemberPage({ params }: { params: { slug: string } }) {
-    const member = siteContent.team.find((m) => m.slug === params.slug);
+export default async function TeamMemberPage({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
+    const member = siteContent.team.members.find((m) => m.slug === slug);
     if (!member) return notFound();
 
     return (

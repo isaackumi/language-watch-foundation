@@ -178,7 +178,53 @@ export const siteContent = {
       "UK": ["Mrs Jennifer Lawson", "Mr. Nathaniel Arthur (Nat Sankɔfa Tete Arthur Fame)"],
       "Belgium": ["Nana Baafoɔ Arko Akwa I"],
       "Spain": ["Mrs Gloria Gibbah Cudjoe"]
-    }
+    },
+    members: [
+      {
+        name: "Dr. Nana Anima Wiafe-Akenten",
+        role: "Founder & CEO",
+        bio: "First PhD holder in Twi - GHLS. Language, culture, media & communication expert, specialized in Ethnography of Communication - Media Discourse, Socio-Political & Socio-Cultural Discourse, Oral Literature & Written Literature, Cultural Studies, Pragmatics, Sociolinguistics, Translation & Interpretation, Voice & Speech, Effective Communication.",
+        image: "/images/doc.jpeg",
+        slug: "dr-nana-anima-wiafe-akenten",
+        social: {
+          linkedin: "#",
+          twitter: "#"
+        }
+      },
+      {
+        name: "Professor Edwin Clifford Mensah",
+        role: "Associate Dean & Professor of Microeconomics, University of North Carolina, Pembroke",
+        bio: "Expert in microeconomics with extensive experience in academic leadership and research.",
+        image: "/images/team/dummy-profile-pic.jpeg",
+        slug: "professor-edwin-clifford-mensah",
+        social: {
+          linkedin: "#",
+          twitter: "#"
+        }
+      },
+      {
+        name: "Professor Emmanuel Ohene Afoakwa",
+        role: "Chief of Fiapre traditional Area and Vice Chancellor of Ghana Communication Technology University",
+        bio: "Distinguished academic leader and traditional chief with expertise in communication technology and education.",
+        image: "/images/team/dummy-profile-pic.jpeg",
+        slug: "professor-emmanuel-ohene-afoakwa",
+        social: {
+          linkedin: "#",
+          twitter: "#"
+        }
+      },
+      {
+        name: "Dr. Reginald Duah",
+        role: "Linguistics Department, University of Ghana, Legon",
+        bio: "Renowned linguist and researcher specializing in Ghanaian languages and linguistic theory.",
+        image: "/images/team/dummy-profile-pic.jpeg",
+        slug: "dr-reginald-duah",
+        social: {
+          linkedin: "#",
+          twitter: "#"
+        }
+      }
+    ]
   },
 
   contact: {
