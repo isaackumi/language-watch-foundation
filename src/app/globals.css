@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @layer base {
   :root {
@@ -56,12 +54,28 @@
   }
 
   body {
-    @apply bg-white text-gray-900 font-sans;
+    @apply bg-surface text-gray-900 font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   html {
     scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+
+    html {
+      scroll-behavior: auto;
+    }
   }
 }
 
@@ -87,11 +101,11 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 ease-in-out transform hover:scale-105;
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-bold rounded-xl text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 ease-in-out transform hover:scale-105;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 border border-primary-600 text-base font-medium rounded-lg text-primary-600 bg-transparent hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 ease-in-out;
+    @apply inline-flex items-center justify-center px-6 py-3 border border-primary-600 text-base font-bold rounded-xl text-primary-600 bg-transparent hover:bg-primary-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 ease-in-out;
   }
 
   .card-hover {
@@ -104,8 +118,27 @@
   }
 
   .stylish-title {
-    font-family: 'Raleway', 'Inter', 'Segoe UI', 'Arial', sans-serif;
-    letter-spacing: -0.01em;
+    font-family: var(--font-source-sans), system-ui, sans-serif;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+  }
+
+  /* Hero/banner title - bold, large, tight tracking (like "DevSecOps Engineer") */
+  .hero-title {
+    font-family: var(--font-source-sans), system-ui, sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 5vw, 3.5rem); /* 40px - 56px */
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  /* Yellow banner with jagged bottom edge */
+  .banner-jagged {
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 92% 100%, 80% 92%, 60% 100%, 40% 92%, 20% 100%, 8% 90%, 0 100%);
+  }
+
+  .banner-jagged-sm {
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 95% 100%, 85% 95%, 70% 100%, 50% 92%, 30% 100%, 15% 95%, 5% 100%, 0 95%);
   }
 }
 

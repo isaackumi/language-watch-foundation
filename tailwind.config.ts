@@ -9,6 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        banner: '#FFDD67', // Warm yellow for banner (job posting aesthetic)
         primary: {
           50: '#FFF9E6',
           100: '#FFF3CC',
@@ -33,22 +34,30 @@ const config: Config = {
           800: '#660000',
           900: '#330000',
         },
+        surface: {
+          DEFAULT: '#FFFAF2', // Warm cream - matches job posting aesthetic
+          light: '#FFFBF5',
+        },
+        link: {
+          DEFAULT: '#2563eb',
+          hover: '#1d4ed8',
+        },
         dark: {
-          50: '#E6E6E6',
-          100: '#CCCCCC',
-          200: '#999999',
-          300: '#666666',
-          400: '#333333',
-          500: '#000000', // Main black
-          600: '#000000',
-          700: '#000000',
-          800: '#000000',
-          900: '#000000',
+          50: '#f5f5f4',
+          100: '#e7e5e4',
+          200: '#d6d3d1',
+          300: '#a8a29e',
+          400: '#78716c',
+          500: '#1c1917', // Warm dark - complements primary gold
+          600: '#292524',
+          700: '#44403c',
+          800: '#57534e',
+          900: '#0c0a09',
         },
       },
       fontFamily: {
-        sans: ['var(--font-inter)'],
-        display: ['var(--font-raleway)'],
+        sans: ['var(--font-source-sans)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-source-sans)', 'system-ui', 'sans-serif'],
       },
       animation: {
         'fade-up': 'fadeUp 0.5s ease-out',
@@ -93,6 +102,11 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+      // Jagged/curved banner edge - geometric cut at bottom
+      clipPath: {
+        'banner-jagged': 'polygon(0 0, 100% 0, 100% 85%, 92% 100%, 80% 92%, 60% 100%, 40% 92%, 20% 100%, 8% 90%, 0 100%)',
+        'banner-jagged-sm': 'polygon(0 0, 100% 0, 100% 90%, 95% 100%, 85% 95%, 70% 100%, 50% 92%, 30% 100%, 15% 95%, 5% 100%, 0 95%)',
       },
     },
   },

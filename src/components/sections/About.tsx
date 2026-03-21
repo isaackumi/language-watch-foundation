@@ -1,256 +1,119 @@
-'use client';
+'use client'
 
-import { siteContent } from '@/data/content';
-import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
-import { BookOpen, Users, Award, Target, Lightbulb, User, ChevronRight, Quote, CheckCircle, MessageSquare, Globe, Heart, ArrowRight } from 'lucide-react';
-import { useState } from 'react';
-import Link from 'next/link';
+import { siteContent } from '@/data/content'
+import { motion } from 'framer-motion'
+import { Target, Award, Lightbulb, ArrowRight } from 'lucide-react'
+import Link from 'next/link'
+import Image from 'next/image'
+
+const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }
+const stagger = { visible: { transition: { staggerChildren: 0.08, delayChildren: 0.15 } } }
 
 export default function About() {
-    const [hoveredObjective, setHoveredObjective] = useState<number | null>(null);
-    const [isLoading, setIsLoading] = useState(false);
+  const { about, teamMembers } = siteContent
 
-    // Animation variants
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.1,
-                delayChildren: 0.3
-            }
-        }
-    };
+  return (
+    <section id="about" className="relative py-24 bg-surface overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-primary-900/5 via-transparent to-primary-900/5 pointer-events-none" />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Mission & Vision */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          variants={stagger}
+          className="mb-20 grid md:grid-cols-2 gap-8"
+        >
+          <motion.div
+            variants={fadeUp}
+            transition={{ duration: 0.5 }}
+            className="bg-white rounded-xl border border-gray-200 shadow-sm p-8"
+          >
+            <Award className="w-10 h-10 text-primary-500 mb-4" />
+            <h3 className="text-xl font-bold text-gray-900 mb-3">Our Mission</h3>
+            <p className="text-gray-600 text-[15px] leading-relaxed mb-3">{about.mission.intro}</p>
+            <ul className="space-y-2 text-gray-600 text-[15px]">
+              {about.mission.points.map((point, i) => (
+                <li key={i} className="flex items-start gap-2">
+                  <span className="text-primary-500">⮚</span>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+          <motion.div
+            variants={fadeUp}
+            transition={{ duration: 0.5 }}
+            className="bg-white rounded-xl border border-gray-200 shadow-sm p-8"
+          >
+            <Lightbulb className="w-10 h-10 text-primary-500 mb-4" />
+            <h3 className="text-xl font-bold text-gray-900 mb-3">Our Vision</h3>
+            <p className="text-gray-600 text-[15px] leading-relaxed">{about.vision.text}</p>
+          </motion.div>
+        </motion.div>
 
-    const itemVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 0.5,
-                ease: "easeOut"
-            }
-        }
-    };
+        {/* Intro with founder image */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          variants={stagger}
+          className="mb-20 grid md:grid-cols-2 gap-12 items-center"
+        >
+          <div>
+            <motion.p variants={fadeUp} className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">
+              About Us
+            </motion.p>
+            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+              Kasa wↄ Tumi – Words are Powerful
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-lg text-gray-600 leading-relaxed mb-6">
+              {about.paragraphs[0]}
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-2 text-primary-600 font-bold hover:text-primary-700 transition-colors"
+              >
+                Learn More About Us
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </motion.div>
+          </div>
+          <motion.div variants={fadeUp} className="relative rounded-2xl overflow-hidden shadow-lg aspect-[4/3]">
+            <Image
+              src={teamMembers.founder.image}
+              alt="Dr. Nana Anima Wiafe-Akenten - Founder, LWF"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+          </motion.div>
+        </motion.div>
 
-    const objectives = [
-        {
-            icon: Target,
-            title: "Promote Decorous Language",
-            description: "Foster respectful and appropriate language use in media and public discourse",
-            color: "from-blue-500 to-blue-600",
-            stats: "100+ Media Engagements"
-        },
-        {
-            icon: Globe,
-            title: "Cultural Awareness",
-            description: "Enhance understanding of cultural communication and language nuances",
-            color: "from-green-500 to-green-600",
-            stats: "50+ Cultural Events"
-        },
-        {
-            icon: Heart,
-            title: "Peace & Unity",
-            description: "Promote national peace and cohesion through mindful communication",
-            color: "from-red-500 to-red-600",
-            stats: "1000+ Community Members"
-        },
-        {
-            icon: BookOpen,
-            title: "Language Education",
-            description: "Provide comprehensive training in effective communication skills",
-            color: "from-purple-500 to-purple-600",
-            stats: "200+ Training Sessions"
-        },
-        {
-            icon: MessageSquare,
-            title: "Professional Excellence",
-            description: "Develop expertise in public speaking and media communication",
-            color: "from-yellow-500 to-yellow-600",
-            stats: "500+ Professionals Trained"
-        }
-    ];
-
-    return (
-        <section id="about" className="py-24 bg-gradient-to-b from-primary-50/60 to-white relative overflow-hidden">
-            {/* Background Pattern */}
-            <div className="absolute inset-0 opacity-5">
-                <div className="absolute inset-0" style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-                }} />
-            </div>
-
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-                {/* Animated, gradient-underlined section header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="text-center mb-20"
-                >
-                    <motion.h2
-                        className="text-4xl sm:text-5xl font-extrabold tracking-tight stylish-title mb-6 flex items-center justify-center gap-2 relative"
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                    >
-                        <motion.div
-                            animate={{ rotate: [0, 10, -10, 0] }}
-                            transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
-                        >
-                            <Lightbulb className="w-8 h-8 text-primary-500" />
-                        </motion.div>
-                        <span className="relative inline-block">
-                            About Us
-                            <motion.span
-                                className="absolute left-0 -bottom-1 w-full h-2 bg-gradient-to-r from-primary-300 to-primary-500 rounded-full"
-                                animate={{
-                                    scale: [1, 1.1, 1],
-                                    opacity: [0.5, 1, 0.5]
-                                }}
-                                transition={{ duration: 2, repeat: Infinity }}
-                            />
-                        </span>
-                    </motion.h2>
-                    <motion.div
-                        className="w-24 h-1 bg-gradient-to-r from-primary-400 to-primary-600 mx-auto mb-8 rounded-full"
-                        animate={{
-                            scale: [1, 1.2, 1],
-                            opacity: [0.5, 1, 0.5]
-                        }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                    />
-                    <motion.p
-                        className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed text-justify"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 0.4 }}
-                    >
-                        <span className="float-left text-5xl font-bold text-primary-500 mr-3 leading-none select-none" style={{ fontFamily: 'serif' }}>
-                            {siteContent.about.description.charAt(0)}
-                        </span>
-                        {siteContent.about.description.slice(1)}
-                    </motion.p>
-                </motion.div>
-
-                {/* Objectives Grid */}
-                <motion.div
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="visible"
-                >
-                    {objectives.map((objective, index) => (
-                        <motion.div
-                            key={index}
-                            variants={itemVariants}
-                            className="relative bg-white/70 backdrop-blur-lg rounded-2xl shadow-xl p-8 flex flex-col items-center justify-center group overflow-hidden hover:shadow-2xl transition-all duration-300"
-                            onHoverStart={() => setHoveredObjective(index)}
-                            onHoverEnd={() => setHoveredObjective(null)}
-                        >
-                            <motion.div
-                                className={`absolute inset-0 bg-gradient-to-br ${objective.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
-                                animate={{
-                                    scale: hoveredObjective === index ? 1.1 : 1,
-                                    rotate: hoveredObjective === index ? 5 : 0
-                                }}
-                                transition={{ duration: 0.3 }}
-                            />
-                            <motion.div
-                                animate={{
-                                    scale: hoveredObjective === index ? 1.2 : 1,
-                                    rotate: hoveredObjective === index ? 10 : 0
-                                }}
-                                transition={{ duration: 0.3 }}
-                            >
-                                <objective.icon className="w-16 h-16 text-primary-200 absolute right-4 top-4 opacity-20 group-hover:opacity-30 transition-all duration-300" />
-                            </motion.div>
-                            <h3 className="text-2xl font-extrabold stylish-title text-primary-600 mb-4 group-hover:underline group-hover:decoration-primary-400 group-hover:underline-offset-8 transition-all duration-300">
-                                {objective.title}
-                            </h3>
-                            <p className="text-gray-700 text-justify leading-relaxed mb-4">
-                                {objective.description}
-                            </p>
-                            <motion.div
-                                className="text-sm text-primary-600 font-semibold"
-                                animate={{
-                                    y: hoveredObjective === index ? -5 : 0
-                                }}
-                                transition={{ duration: 0.3 }}
-                            >
-                                {objective.stats}
-                            </motion.div>
-                        </motion.div>
-                    ))}
-                </motion.div>
-
-                {/* Mission & Vision */}
-                <motion.div
-                    className="grid md:grid-cols-2 gap-8 mb-16"
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="visible"
-                >
-                    <motion.div
-                        variants={itemVariants}
-                        className="relative bg-white/70 backdrop-blur-lg rounded-2xl shadow-xl p-8 flex flex-col items-center justify-center group overflow-hidden hover:shadow-2xl transition-all duration-300"
-                    >
-                        <motion.div
-                            animate={{ rotate: [0, 5, -5, 0] }}
-                            transition={{ duration: 4, repeat: Infinity }}
-                        >
-                            <Award className="w-16 h-16 text-primary-200 absolute right-4 top-4 opacity-20 group-hover:scale-110 group-hover:opacity-30 transition-all duration-300" />
-                        </motion.div>
-                        <h3 className="text-2xl font-extrabold stylish-title text-primary-600 mb-4 group-hover:underline group-hover:decoration-primary-400 group-hover:underline-offset-8 transition-all duration-300">
-                            Mission Statement
-                        </h3>
-                        <p className="text-gray-700 text-justify leading-relaxed">
-                            {siteContent.about.mission}
-                        </p>
-                    </motion.div>
-
-                    <motion.div
-                        variants={itemVariants}
-                        className="relative bg-white/70 backdrop-blur-lg rounded-2xl shadow-xl p-8 flex flex-col items-center justify-center group overflow-hidden hover:shadow-2xl transition-all duration-300"
-                    >
-                        <motion.div
-                            animate={{ rotate: [0, -5, 5, 0] }}
-                            transition={{ duration: 4, repeat: Infinity }}
-                        >
-                            <Lightbulb className="w-16 h-16 text-primary-200 absolute right-4 top-4 opacity-20 group-hover:scale-110 group-hover:opacity-30 transition-all duration-300" />
-                        </motion.div>
-                        <h3 className="text-2xl font-extrabold stylish-title text-primary-600 mb-4 group-hover:underline group-hover:decoration-primary-400 group-hover:underline-offset-8 transition-all duration-300">
-                            Our Vision
-                        </h3>
-                        <p className="text-gray-700 text-justify leading-relaxed">
-                            {siteContent.about.vision}
-                        </p>
-                    </motion.div>
-                </motion.div>
-
-                {/* Call to Action */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.6 }}
-                    className="text-center"
-                >
-                    <Link
-                        href="/about"
-                        className="inline-flex items-center gap-2 px-8 py-4 rounded-md bg-primary-600 text-white font-semibold shadow-lg hover:bg-primary-700 transition-colors duration-300 group"
-                    >
-                        <span>Learn More About Us</span>
-                        <motion.div
-                            animate={{ x: [0, 5, 0] }}
-                            transition={{ duration: 1.5, repeat: Infinity }}
-                        >
-                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                        </motion.div>
-                    </Link>
-                </motion.div>
-            </div>
-        </section>
-    );
-} 
+        {/* Objectives */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          variants={stagger}
+        >
+          {about.objectives.items.map((item, i) => (
+            <motion.div
+              key={i}
+              variants={fadeUp}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
+              className="bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300 p-6"
+            >
+              <Target className="w-10 h-10 text-primary-500 mb-4" />
+              <p className="text-gray-600 text-[15px] leading-relaxed">{item}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  )
+}
