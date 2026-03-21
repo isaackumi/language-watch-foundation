@@ -167,7 +167,7 @@ export default function AboutPage() {
           <ul className="space-y-4 text-gray-600">
             {about.objectives.items.map((item, i) => (
               <li key={i} className="flex items-start gap-3">
-                <span className="text-primary-500 mt-1"></span>
+                <span className="text-primary-500 mt-1 flex-shrink-0">⮚</span>
                 <span>{item}</span>
               </li>
             ))}

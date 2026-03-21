@@ -2,6 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Bagoss Condensed */
+@font-face {
+  font-family: 'BagossCondensedFont';
+  src: url('/fonts/bagoss-font-family/BagossCondensed-TRIAL-Thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'BagossCondensedFont';
+  src: url('/fonts/bagoss-font-family/BagossCondensed-TRIAL-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'BagossCondensedFont';
+  src: url('/fonts/bagoss-font-family/BagossCondensed-TRIAL-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'BagossCondensedFont';
+  src: url('/fonts/bagoss-font-family/BagossCondensed-TRIAL-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'BagossCondensedFont';
+  src: url('/fonts/bagoss-font-family/BagossCondensed-TRIAL-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'BagossCondensedFont';
+  src: url('/fonts/bagoss-font-family/BagossCondensed-TRIAL-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 @layer base {
   :root {
@@ -58,6 +101,11 @@
     font-feature-settings: "rlig" 1, "calt" 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Bagoss Condensed for headings - add @font-face when you have the font files */
+  h1, h2, h3, h4 {
+    font-family: BagossCondensedFont, "BagossCondensedFont Fallback", Arial, Helvetica, sans-serif;
   }
 
   html {
@@ -118,14 +166,14 @@
   }
 
   .stylish-title {
-    font-family: var(--font-source-sans), system-ui, sans-serif;
+    font-family: BagossCondensedFont, "BagossCondensedFont Fallback", Arial, Helvetica, sans-serif;
     font-weight: 900;
     letter-spacing: -0.02em;
   }
 
   /* Hero/banner title - bold, large, tight tracking (like "DevSecOps Engineer") */
   .hero-title {
-    font-family: var(--font-source-sans), system-ui, sans-serif;
+    font-family: BagossCondensedFont, "BagossCondensedFont Fallback", Arial, Helvetica, sans-serif;
     font-weight: 900;
     font-size: clamp(2.5rem, 5vw, 3.5rem); /* 40px - 56px */
     letter-spacing: -0.02em;

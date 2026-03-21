@@ -87,7 +87,7 @@ export default function Navigation() {
               className={cn(
                 'ml-4 px-6 py-2.5 rounded-full font-semibold text-sm transition-colors',
                 isLightNav
-                  ? 'bg-link text-white hover:bg-link-hover'
+                  ? 'bg-primary-600 text-white hover:bg-primary-700'
                   : 'bg-white text-primary-700 hover:bg-white/95'
               )}
             >
@@ -135,7 +135,7 @@ export default function Navigation() {
                 href="/contact"
                 className={cn(
                   'block px-4 py-3 rounded-xl font-semibold text-center',
-                  isLightNav ? 'bg-link text-white' : 'bg-white text-primary-700'
+                  isLightNav ? 'bg-primary-600 text-white' : 'bg-white text-primary-700'
                 )}
                 onClick={() => setIsMobileMenuOpen(false)}
               >

@@ -57,7 +57,8 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['var(--font-source-sans)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-source-sans)', 'system-ui', 'sans-serif'],
+        display: ['BagossCondensedFont', 'BagossCondensedFont Fallback', 'Arial', 'Helvetica', 'sans-serif'],
+        heading: ['BagossCondensedFont', 'BagossCondensedFont Fallback', 'Arial', 'Helvetica', 'sans-serif'],
       },
       animation: {
         'fade-up': 'fadeUp 0.5s ease-out',

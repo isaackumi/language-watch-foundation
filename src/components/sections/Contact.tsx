@@ -240,7 +240,7 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full px-6 py-4 rounded-xl bg-link text-white font-bold hover:bg-link-hover transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full px-6 py-4 rounded-xl bg-primary-600 text-white font-bold hover:bg-primary-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {isSubmitting ? (
                   <>Sending...</>

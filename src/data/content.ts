@@ -18,11 +18,10 @@ export const siteContent = {
     title: "Language Watch Foundation (LWF)",
     description: "Kasa wↄ Tumi – Words are Powerful. We are linguists, cultural activists, language professionals, and communication experts dedicated to promoting decorous and polite language use.",
     ctaText: "Learn More About Us",
-    backgroundImage: "/images/banner.jpg",
+    backgroundImage: "/images/out1.jpeg",
     slides: [
-      { image: "/images/banner.jpg", alt: "LWF promoting language and communication" },
-      { image: "/images/out1.jpeg", alt: "LWF outreach and workshops" },
-      { image: "/images/out2.jpeg", alt: "Public speaking and training" },
+      { image: "/images/out1.jpeg", alt: "LWF promoting language and communication" },
+      { image: "/images/out2.jpeg", alt: "LWF outreach and workshops" },
       { image: "/images/twi1.png", alt: "Ghanaian language and culture" },
     ]
   },
