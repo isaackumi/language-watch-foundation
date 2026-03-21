@@ -64,24 +64,24 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-primary-900/40 via-transparent to-primary-900/40" />
       </div>
 
-      {/* Slide navigation arrows */}
+      {/* Slide navigation arrows - hidden on mobile to avoid blocking content */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+        className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 items-center justify-center text-white hover:bg-white/30 transition-colors"
         aria-label="Previous slide"
       >
         <ChevronLeft className="w-6 h-6" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+        className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 items-center justify-center text-white hover:bg-white/30 transition-colors"
         aria-label="Next slide"
       >
         <ChevronRight className="w-6 h-6" />
       </button>
 
-      {/* Slide dots */}
-      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+      {/* Slide dots - lower on mobile (no scroll indicator), higher on desktop */}
+      <div className="absolute bottom-6 sm:bottom-24 left-1/2 -translate-x-1/2 z-20 flex gap-2">
         {slides.map((_, i) => (
           <button
             key={i}
@@ -152,12 +152,12 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator - hidden on mobile to avoid clutter and overlap */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.8 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+        className="hidden sm:block absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
       >
         <button
           onClick={handleScrollToAbout}

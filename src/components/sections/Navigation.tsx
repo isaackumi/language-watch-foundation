@@ -41,26 +41,26 @@ export default function Navigation() {
     <nav
       aria-label="Main navigation"
       className={cn(
-        'fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl transition-all duration-300 rounded-2xl',
+        'fixed top-2 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl transition-all duration-300 rounded-2xl sm:top-4',
         isLightNav
           ? 'bg-white/95 backdrop-blur-xl border border-gray-200 shadow-lg'
           : 'bg-white/10 backdrop-blur-lg border border-white/20'
       )}
     >
-      <div className="px-6 py-4">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
+      <div className="px-3 py-3 sm:px-6 sm:py-4">
+        <div className="flex items-center justify-between gap-2">
+          <Link href="/" className="flex items-center gap-2 sm:gap-3 min-w-0">
             <Image
               src="/images/logo/nananom.jpg"
               alt="Language Watch Foundation"
-              width={40}
-              height={40}
-              className="rounded-lg object-cover flex-shrink-0"
+              width={36}
+              height={36}
+              className="rounded-lg object-cover flex-shrink-0 sm:w-10 sm:h-10"
             />
-            <span className={cn('text-xl font-bold tracking-tight', isLightNav ? 'text-gray-900' : 'text-white')}>
-              LANGUAGE WATCH
+            <span className={cn('font-bold tracking-tight truncate', isLightNav ? 'text-gray-900' : 'text-white', 'text-base sm:text-xl')}>
+              <span className="sm:hidden">LWF</span>
+              <span className="hidden sm:inline">LANGUAGE WATCH (LWF)</span>
             </span>
-            <span className={cn('font-bold', isLightNav ? 'text-primary-600' : 'text-primary-300')}>(LWF)</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-1">
@@ -117,14 +117,20 @@ export default function Navigation() {
             exit={{ opacity: 0, height: 0 }}
             className={cn('md:hidden overflow-hidden', isLightNav ? 'border-t border-gray-200' : 'border-t border-white/20')}
           >
-            <div className="px-6 py-4 space-y-2">
+            <div className="px-4 py-4 space-y-1 max-h-[70vh] overflow-y-auto">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    'block px-4 py-3 rounded-xl font-semibold transition-colors',
-                    isLightNav ? 'text-gray-700 hover:bg-gray-50' : 'text-white hover:bg-white/15'
+                    'flex items-center px-4 py-3.5 rounded-xl font-semibold transition-colors min-h-[44px]',
+                    isLightNav
+                      ? isActive(link.href)
+                        ? 'bg-primary-50 text-primary-700'
+                        : 'text-gray-700 active:bg-gray-100'
+                      : isActive(link.href)
+                        ? 'bg-white/25 text-white'
+                        : 'text-white active:bg-white/15'
                   )}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
@@ -134,7 +140,7 @@ export default function Navigation() {
               <Link
                 href="/contact"
                 className={cn(
-                  'block px-4 py-3 rounded-xl font-semibold text-center',
+                  'flex items-center justify-center px-4 py-3.5 rounded-xl font-semibold min-h-[44px] mt-2',
                   isLightNav ? 'bg-primary-600 text-white' : 'bg-white text-primary-700'
                 )}
                 onClick={() => setIsMobileMenuOpen(false)}
