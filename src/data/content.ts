@@ -1,6 +1,10 @@
 export const siteContent = {
   meta: {
     title: "Language Watch Foundation (LWF)",
+    /** About hero: use these for layout; fullTitle stays one-line for metadata copy */
+    brandName: "Language Watch Foundation",
+    brandTagline: "Kasa wↄ Tumi – Words are Powerful",
+    brandTags: ["#YԑnhwԑYԑnKasayie", "#Kasadɛ", "Kasahwam"],
     fullTitle: "Language Watch Foundation (Kasa wↄ Tumi – Words are Powerful) #YԑnhwԑYԑnKasayie, #Kasadɛ, Kasahwam",
     description: "LanguageWatch Foundation (LWF) is an association of professionals and practitioners of language & culture, linguists, and communication experts dedicated to promoting decorous and polite language use for national peace, stability and cohesion.",
     keywords: "Language Watch, LWF, Kasa wↄ Tumi, Twi, Akan, Linguist, Ghana, Accra"

@@ -2,13 +2,15 @@
 
 import { siteContent } from '@/data/content'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Clock, Send, ArrowRight, CheckCircle2, AlertCircle, Globe } from 'lucide-react'
+import { motion, useReducedMotion } from 'framer-motion'
+import { Mail, Phone, MapPin, Send, ArrowRight, CheckCircle2, AlertCircle, Globe } from 'lucide-react'
 import { useState } from 'react'
+import { cn } from '@/lib/utils'
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
+  const reduceMotion = useReducedMotion()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [formError, setFormError] = useState<string | null>(null)
@@ -87,24 +89,27 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
   ]
 
   return (
-    <section id="contact" className="relative py-24 bg-white overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-tr from-primary-900/5 via-transparent to-primary-800/5 pointer-events-none" />
+    <section id="contact" className="relative py-24 lg:py-28 bg-white overflow-hidden font-sans text-slate-900">
+      <div className="absolute inset-0 bg-[linear-gradient(160deg,rgba(238,242,255,0.9)_0%,#ffffff_45%,rgba(236,253,245,0.35)_100%)] pointer-events-none" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section header */}
         {!hideHeader && (
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={
+              reduceMotion
+                ? { duration: 0.35 }
+                : { type: 'spring', stiffness: 380, damping: 32 }
+            }
             className="mb-16"
           >
-            <p className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3">
-              Contact
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 max-w-3xl">
+            <p className="section-eyebrow mb-3">Contact</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 max-w-3xl font-heading text-balance">
               Get in touch
             </h2>
-            <p className="text-lg text-gray-600 leading-relaxed max-w-2xl">
+            <p className="text-lg text-slate-600 leading-relaxed max-w-2xl">
               For more information on our services, kindly get in touch using the following addresses and/or telephone numbers. Your comments and suggestions are also welcome.
             </p>
           </motion.div>
@@ -113,12 +118,18 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Form card */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="bg-white rounded-2xl border border-gray-200 shadow-lg p-8 md:p-10"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={
+              reduceMotion
+                ? { duration: 0.4, delay: 0.05 }
+                : { type: 'spring', stiffness: 360, damping: 32, delay: 0.06 }
+            }
+            whileHover={reduceMotion ? undefined : { y: -2 }}
+            className="rounded-2xl border-2 border-indigo-200/70 bg-white/90 backdrop-blur-md shadow-xl shadow-indigo-950/10 p-8 md:p-10 text-slate-900"
           >
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-5 font-sans">
               {formStatus === 'success' && (
                 <div
                   role="status"
@@ -153,8 +164,8 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
                   aria-invalid={!!errors.name}
                   aria-describedby={errors.name ? 'name-error' : undefined}
                   required
-                  className={`w-full px-4 py-3 rounded-xl border bg-white focus:ring-2 focus:ring-link/20 focus:border-link transition-colors ${
-                    errors.name ? 'border-red-500' : 'border-gray-200'
+                  className={`w-full px-4 py-3 rounded-xl border bg-white focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition-colors duration-200 ${
+                    errors.name ? 'border-red-500' : 'border-slate-200'
                   }`}
                   placeholder="John Doe"
                 />
@@ -178,8 +189,8 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
                   aria-invalid={!!errors.email}
                   aria-describedby={errors.email ? 'email-error' : undefined}
                   required
-                  className={`w-full px-4 py-3 rounded-xl border bg-white focus:ring-2 focus:ring-link/20 focus:border-link transition-colors ${
-                    errors.email ? 'border-red-500' : 'border-gray-200'
+                  className={`w-full px-4 py-3 rounded-xl border bg-white focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition-colors duration-200 ${
+                    errors.email ? 'border-red-500' : 'border-slate-200'
                   }`}
                   placeholder="john@example.com"
                 />
@@ -203,8 +214,8 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
                   aria-invalid={!!errors.subject}
                   aria-describedby={errors.subject ? 'subject-error' : undefined}
                   required
-                  className={`w-full px-4 py-3 rounded-xl border bg-white focus:ring-2 focus:ring-link/20 focus:border-link transition-colors ${
-                    errors.subject ? 'border-red-500' : 'border-gray-200'
+                  className={`w-full px-4 py-3 rounded-xl border bg-white focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition-colors duration-200 ${
+                    errors.subject ? 'border-red-500' : 'border-slate-200'
                   }`}
                   placeholder="How can we help?"
                 />
@@ -228,8 +239,8 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
                   aria-describedby={errors.message ? 'message-error' : undefined}
                   required
                   rows={4}
-                  className={`w-full px-4 py-3 rounded-xl border bg-white focus:ring-2 focus:ring-link/20 focus:border-link transition-colors ${
-                    errors.message ? 'border-red-500' : 'border-gray-200'
+                  className={`w-full px-4 py-3 rounded-xl border bg-white focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition-colors duration-200 ${
+                    errors.message ? 'border-red-500' : 'border-slate-200'
                   }`}
                   placeholder="Your message here..."
                 />
@@ -240,7 +251,7 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full px-6 py-4 rounded-xl bg-primary-600 text-white font-bold hover:bg-primary-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full cursor-pointer px-6 py-4 rounded-2xl bg-emerald-500 text-indigo-950 font-bold hover:bg-emerald-400 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
               >
                 {isSubmitting ? (
                   <>Sending...</>
@@ -256,12 +267,17 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
 
           {/* Contact info card */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-white rounded-2xl border border-gray-200 shadow-lg p-8 md:p-10"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={
+              reduceMotion
+                ? { duration: 0.4, delay: 0.1 }
+                : { type: 'spring', stiffness: 360, damping: 32, delay: 0.12 }
+            }
+            className="rounded-2xl border-2 border-indigo-800 bg-indigo-950 shadow-xl p-8 md:p-10 text-white ring-1 ring-white/10 font-sans"
           >
-            <h3 className="text-xl font-bold text-gray-900 mb-8">Contact Information</h3>
+            <h3 className="text-xl font-bold text-white mb-8 font-heading tracking-tight">Contact Information</h3>
             <div className="space-y-6">
               {contactInfo.map((info) => {
                 const Wrapper = info.link ? 'a' : 'div'
@@ -272,25 +288,28 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
                   <Wrapper
                     key={info.title}
                     {...wrapperProps}
-                    className="flex items-start gap-4 group p-4 rounded-xl hover:bg-primary-50/50 transition-colors"
+                    className={cn(
+                      'flex items-start gap-4 group p-4 rounded-xl transition-colors duration-200',
+                      info.link ? 'hover:bg-white/5 cursor-pointer' : 'hover:bg-white/[0.02]'
+                    )}
                   >
-                    <div className="p-3 bg-primary-50 rounded-xl group-hover:bg-primary-100 transition-colors flex-shrink-0">
-                      <info.icon className="w-5 h-5 text-primary-600" />
+                    <div className="p-3 bg-white/10 rounded-xl group-hover:bg-emerald-500/20 transition-colors duration-200 flex-shrink-0 border border-white/10">
+                      <info.icon className="w-5 h-5 text-emerald-300" aria-hidden />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900 mb-0.5">{info.title}</h4>
-                      <p className="text-gray-600 text-[15px] leading-relaxed">{info.value}</p>
+                      <h4 className="font-semibold text-white mb-0.5">{info.title}</h4>
+                      <p className="text-indigo-50 text-[15px] leading-relaxed font-medium">{info.value}</p>
                     </div>
                   </Wrapper>
                 )
               })}
             </div>
-            <div className="mt-8 pt-8 border-t border-gray-200">
+            <div className="mt-8 pt-8 border-t border-indigo-700/80">
               <Link
                 href="https://maps.google.com/?q=Onyame+Na+Ay%C4%9B+House+Ayimensa-Kweiman+Road+Accra"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-primary-600 font-semibold hover:text-primary-700 transition-colors"
+                className="inline-flex cursor-pointer items-center gap-2 text-emerald-300 font-semibold hover:text-emerald-200 transition-colors duration-200"
               >
                 View on Map
                 <ArrowRight className="w-4 h-4" />

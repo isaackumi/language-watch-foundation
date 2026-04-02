@@ -48,13 +48,13 @@ export default function NewsletterForm() {
           aria-label="Email for newsletter subscription"
           aria-invalid={status === 'error'}
           aria-describedby={message ? 'newsletter-message' : undefined}
-          className="w-full px-6 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 font-semibold disabled:opacity-70"
+          className="w-full px-6 py-4 rounded-2xl bg-white/10 border border-white/20 text-white placeholder:text-indigo-200/70 focus:outline-none focus:ring-2 focus:ring-emerald-400/80 focus:border-emerald-300/50 font-semibold disabled:opacity-70 transition-colors duration-200"
         />
         {message && (
           <p
             id="newsletter-message"
             role="status"
-            className={`text-sm font-medium ${status === 'success' ? 'text-primary-300' : 'text-red-300'}`}
+            className={`text-sm font-medium ${status === 'success' ? 'text-emerald-300' : 'text-red-300'}`}
           >
             {message}
           </p>
@@ -63,7 +63,7 @@ export default function NewsletterForm() {
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="px-8 py-4 rounded-xl bg-primary-500 text-white font-bold hover:bg-primary-400 transition-colors disabled:opacity-70 disabled:cursor-not-allowed min-h-[52px]"
+        className="px-8 py-4 rounded-2xl bg-emerald-500 text-indigo-950 font-bold hover:bg-emerald-400 transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed min-h-[52px] cursor-pointer shadow-lg shadow-emerald-900/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-indigo-950"
       >
         {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
       </button>

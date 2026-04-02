@@ -35,12 +35,13 @@ const config: Config = {
           900: '#330000',
         },
         surface: {
-          DEFAULT: '#FFFAF2', // Warm cream - matches job posting aesthetic
-          light: '#FFFBF5',
+          DEFAULT: '#f4f2ff', // Cool lavender-white (design system base)
+          warm: '#fff8f0', // Warm cream band for alternation
+          light: '#faf8ff',
         },
         link: {
-          DEFAULT: '#2563eb',
-          hover: '#1d4ed8',
+          DEFAULT: '#4f46e5',
+          hover: '#4338ca',
         },
         dark: {
           50: '#f5f5f4',
@@ -57,8 +58,15 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['var(--font-source-sans)', 'system-ui', 'sans-serif'],
-        display: ['BagossCondensedFont', 'BagossCondensedFont Fallback', 'Arial', 'Helvetica', 'sans-serif'],
-        heading: ['BagossCondensedFont', 'BagossCondensedFont Fallback', 'Arial', 'Helvetica', 'sans-serif'],
+        display: ['var(--font-lexend)', 'var(--font-source-sans)', 'system-ui', 'sans-serif'],
+        heading: ['var(--font-lexend)', 'var(--font-source-sans)', 'system-ui', 'sans-serif'],
+        bagoss: [
+          'BagossCondensedFont',
+          'BagossCondensedFont Fallback',
+          'Arial',
+          'Helvetica',
+          'sans-serif',
+        ],
       },
       animation: {
         'fade-up': 'fadeUp 0.5s ease-out',

@@ -1,16 +1,24 @@
 import type { Metadata } from 'next'
-import { Source_Sans_3 } from 'next/font/google'
+import { Lexend, Source_Sans_3 } from 'next/font/google'
 import './globals.css'
 import { siteContent } from '@/data/content'
 import Navigation from '@/components/sections/Navigation'
 import Footer from '@/components/sections/Footer'
 import JsonLd from '@/components/JsonLd'
+import { DevTwentyFirstToolbar } from '@/components/dev/DevTwentyFirstToolbar'
 
 const sourceSans = Source_Sans_3({
   subsets: ['latin'],
   variable: '--font-source-sans',
   display: 'swap',
   weight: ['400', '600', '700', '800', '900'],
+})
+
+const lexend = Lexend({
+  subsets: ['latin'],
+  variable: '--font-lexend',
+  display: 'swap',
+  weight: ['400', '500', '600', '700', '800'],
 })
 
 export const metadata: Metadata = {
@@ -62,14 +70,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={sourceSans.variable}>
+    <html lang="en" className={`${sourceSans.variable} ${lexend.variable}`}>
       <head>
         <link rel="icon" href="/images/logo/nananom.jpg" type="image/jpeg" />
         <link rel="apple-touch-icon" href="/images/logo/nananom.jpg" />
-        <meta name="theme-color" content="#e7a906" />
+        <meta name="theme-color" content="#4f46e5" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className={`${sourceSans.className} antialiased`}>
+        <DevTwentyFirstToolbar />
         <JsonLd />
         <a
           href="#main-content"
