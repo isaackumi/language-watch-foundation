@@ -5,31 +5,23 @@ import NewsletterForm from './NewsletterForm'
 
 export default function Footer() {
   return (
-    <footer className="relative bg-indigo-950 text-white rounded-t-[2rem] overflow-hidden border-t border-indigo-800/80">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_10%_100%,rgba(16,185,129,0.12),transparent_55%)] pointer-events-none" />
-      {/* Main Footer Content - Large */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-16">
-          {/* Company Info - Wider column */}
-          <div className="lg:col-span-2 space-y-6">
-            <h3 className="text-3xl font-extrabold text-white tracking-tight font-heading">
-              LANGUAGE WATCH Foundation
-            </h3>
-            <p className="text-xl font-semibold text-emerald-300">(LWF)</p>
-            <p className="text-indigo-100 text-lg leading-relaxed max-w-md">
-              {siteContent.footer.description}
-            </p>
-            <p className="text-indigo-200/90 text-base italic">
-              Kasa wↄ Tumi – Words are Powerful
-            </p>
-            <div className="flex gap-4 pt-4" role="list">
+    <footer className="relative overflow-hidden border-t-4 border-primary-500 bg-brand-ink text-brand-paper">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_100%_80%_at_0%_100%,rgba(178,74,50,0.12),transparent_50%)]" />
+      <div className="container relative z-10 mx-auto px-4 py-20 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-5">
+          <div className="space-y-6 lg:col-span-2">
+            <h3 className="font-heading text-3xl font-semibold tracking-tight text-white">LANGUAGE WATCH Foundation</h3>
+            <p className="text-xl font-semibold text-primary-400">(LWF)</p>
+            <p className="max-w-md text-lg leading-relaxed text-stone-300">{siteContent.footer.description}</p>
+            <p className="text-base italic text-stone-400">Kasa wↄ Tumi – Words are Powerful</p>
+            <div className="flex gap-3 pt-4" role="list">
               {siteContent.contact.social.facebook && (
                 <a
                   href={siteContent.contact.social.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Follow us on Facebook"
-                  className="p-3 bg-white/10 rounded-xl hover:bg-emerald-500 hover:text-indigo-950 transition-all duration-200 min-w-[44px] min-h-[44px] flex items-center justify-center cursor-pointer border border-white/10"
+                  className="flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center rounded-sm border border-white/15 bg-white/5 p-3 transition-colors hover:border-primary-500/50 hover:bg-primary-500 hover:text-brand-ink"
                 >
                   <Facebook className="h-6 w-6" />
                 </a>
@@ -40,7 +32,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Follow us on Twitter"
-                  className="p-3 bg-white/10 rounded-xl hover:bg-emerald-500 hover:text-indigo-950 transition-all duration-200 min-w-[44px] min-h-[44px] flex items-center justify-center cursor-pointer border border-white/10"
+                  className="flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center rounded-sm border border-white/15 bg-white/5 p-3 transition-colors hover:border-primary-500/50 hover:bg-primary-500 hover:text-brand-ink"
                 >
                   <Twitter className="h-6 w-6" />
                 </a>
@@ -51,7 +43,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Follow us on Instagram"
-                  className="p-3 bg-white/10 rounded-xl hover:bg-emerald-500 hover:text-indigo-950 transition-all duration-200 min-w-[44px] min-h-[44px] flex items-center justify-center cursor-pointer border border-white/10"
+                  className="flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center rounded-sm border border-white/15 bg-white/5 p-3 transition-colors hover:border-primary-500/50 hover:bg-primary-500 hover:text-brand-ink"
                 >
                   <Instagram className="h-6 w-6" />
                 </a>
@@ -62,7 +54,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Follow us on LinkedIn"
-                  className="p-3 bg-white/10 rounded-xl hover:bg-emerald-500 hover:text-indigo-950 transition-all duration-200 min-w-[44px] min-h-[44px] flex items-center justify-center cursor-pointer border border-white/10"
+                  className="flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center rounded-sm border border-white/15 bg-white/5 p-3 transition-colors hover:border-primary-500/50 hover:bg-primary-500 hover:text-brand-ink"
                 >
                   <Linkedin className="h-6 w-6" />
                 </a>
@@ -73,7 +65,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Subscribe on YouTube"
-                  className="p-3 bg-white/10 rounded-xl hover:bg-emerald-500 hover:text-indigo-950 transition-all duration-200 min-w-[44px] min-h-[44px] flex items-center justify-center cursor-pointer border border-white/10"
+                  className="flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center rounded-sm border border-white/15 bg-white/5 p-3 transition-colors hover:border-primary-500/50 hover:bg-primary-500 hover:text-brand-ink"
                 >
                   <Youtube className="h-6 w-6" />
                 </a>
@@ -81,16 +73,12 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h4 className="text-xl font-bold text-white mb-8 font-heading">Quick Links</h4>
+            <h4 className="mb-8 font-heading text-xl font-semibold text-white">Quick Links</h4>
             <ul className="space-y-5">
               {siteContent.footer.quickLinks.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-indigo-100 hover:text-emerald-300 font-semibold transition-colors duration-200 text-lg cursor-pointer"
-                  >
+                  <Link href={link.href} className="text-lg font-semibold text-stone-300 transition-colors hover:text-primary-400">
                     {link.name}
                   </Link>
                 </li>
@@ -98,16 +86,12 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Services */}
           <div>
-            <h4 className="text-xl font-bold text-white mb-8 font-heading">Our Services</h4>
+            <h4 className="mb-8 font-heading text-xl font-semibold text-white">Our Services</h4>
             <ul className="space-y-5">
               {siteContent.footer.services.map((service) => (
                 <li key={service.name}>
-                  <Link
-                    href={service.href}
-                    className="text-indigo-100 hover:text-emerald-300 font-semibold transition-colors duration-200 text-lg cursor-pointer"
-                  >
+                  <Link href={service.href} className="text-lg font-semibold text-stone-300 transition-colors hover:text-primary-400">
                     {service.name}
                   </Link>
                 </li>
@@ -115,35 +99,41 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact Info */}
           <div>
-            <h4 className="text-xl font-bold text-white mb-8 font-heading">Contact Us</h4>
+            <h4 className="mb-8 font-heading text-xl font-semibold text-white">Contact Us</h4>
             <ul className="space-y-6">
               <li className="flex items-start gap-4">
-                <MapPin className="h-6 w-6 text-emerald-300 flex-shrink-0 mt-1" />
+                <MapPin className="mt-1 h-6 w-6 shrink-0 text-primary-400" />
                 <div>
-                  <p className="text-indigo-100 font-semibold text-lg">{siteContent.contact.location}</p>
-                  <p className="text-indigo-200/80">{siteContent.contact.address}</p>
+                  <p className="text-lg font-semibold text-stone-200">{siteContent.contact.location}</p>
+                  <p className="text-stone-400">{siteContent.contact.address}</p>
                 </div>
               </li>
               <li className="flex items-start gap-4">
-                <Phone className="h-6 w-6 text-emerald-300 flex-shrink-0 mt-1" />
+                <Phone className="mt-1 h-6 w-6 shrink-0 text-primary-400" />
                 <div className="space-y-2">
-                  <a href={`tel:${siteContent.contact.phone.replace(/\s/g, '')}`} className="block text-indigo-100 hover:text-emerald-300 font-semibold text-lg transition-colors duration-200 cursor-pointer">
+                  <a
+                    href={`tel:${siteContent.contact.phone.replace(/\s/g, '')}`}
+                    className="block cursor-pointer text-lg font-semibold text-stone-200 transition-colors hover:text-primary-400"
+                  >
                     {siteContent.contact.phone}
                   </a>
                   {siteContent.contact.mobile.map((mobile) => (
-                    <a key={mobile} href={`tel:${mobile.replace(/\s/g, '')}`} className="block text-indigo-200/80 hover:text-emerald-300 transition-colors duration-200 cursor-pointer">
+                    <a
+                      key={mobile}
+                      href={`tel:${mobile.replace(/\s/g, '')}`}
+                      className="block cursor-pointer text-stone-400 transition-colors hover:text-primary-400"
+                    >
                       {mobile}
                     </a>
                   ))}
                 </div>
               </li>
               <li className="flex items-center gap-4">
-                <Mail className="h-6 w-6 text-emerald-300 flex-shrink-0" />
+                <Mail className="h-6 w-6 shrink-0 text-primary-400" />
                 <a
                   href={`mailto:${siteContent.contact.email}`}
-                  className="text-indigo-100 hover:text-emerald-300 font-semibold text-lg transition-colors duration-200 cursor-pointer"
+                  className="cursor-pointer text-lg font-semibold text-stone-200 transition-colors hover:text-primary-400"
                 >
                   {siteContent.contact.email}
                 </a>
@@ -152,34 +142,26 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Newsletter Section */}
-        <div className="mt-20 pt-16 border-t border-indigo-800/80">
+        <div className="mt-20 border-t border-white/10 pt-16">
           <div className="max-w-2xl">
-            <h4 className="text-2xl font-bold text-white mb-4 font-heading">Stay Updated</h4>
-            <p className="text-indigo-100 text-lg mb-6">
+            <h4 className="mb-4 font-heading text-2xl font-semibold text-white">Stay Updated</h4>
+            <p className="mb-6 text-lg text-stone-300">
               Subscribe to our newsletter for updates on our programs, workshops, and language initiatives.
             </p>
             <NewsletterForm />
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-indigo-800/80 mt-16 pt-10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-indigo-200/90 font-semibold text-lg">
+        <div className="mt-16 border-t border-white/10 pt-10">
+          <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
+            <p className="text-lg font-semibold text-stone-400">
               © {new Date().getFullYear()} LANGUAGE WATCH Foundation (LWF). All rights reserved.
             </p>
             <div className="flex gap-8">
-              <Link
-                href="/privacy"
-                className="text-indigo-200/90 hover:text-emerald-300 font-semibold transition-colors duration-200 cursor-pointer"
-              >
+              <Link href="/privacy" className="font-semibold text-stone-400 transition-colors hover:text-primary-400">
                 Privacy Policy
               </Link>
-              <Link
-                href="/terms"
-                className="text-indigo-200/90 hover:text-emerald-300 font-semibold transition-colors duration-200 cursor-pointer"
-              >
+              <Link href="/terms" className="font-semibold text-stone-400 transition-colors hover:text-primary-400">
                 Terms of Service
               </Link>
             </div>

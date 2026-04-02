@@ -23,32 +23,31 @@ export default function About() {
   const cardMotion = reduceMotion ? fadeUpSimple : fadeUp
 
   return (
-    <section id="about" className="relative py-24 lg:py-28 bg-surface overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(99,102,241,0.12),transparent)] pointer-events-none" />
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Mission & Vision */}
+    <section id="about" className="relative overflow-hidden bg-brand-paper py-24 lg:py-28">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_50%_at_0%_0%,rgba(178,74,50,0.07),transparent_55%)]" />
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
           variants={stagger}
-          className="mb-20 grid md:grid-cols-2 gap-8"
+          className="mb-20 grid gap-8 md:grid-cols-2"
         >
           <motion.div
             variants={cardMotion}
             transition={reduceMotion ? { duration: 0.4 } : undefined}
-            whileHover={reduceMotion ? undefined : { y: -4, transition: { type: 'spring', stiffness: 400, damping: 25 } }}
-            className="glass-card rounded-2xl border-2 border-indigo-200/50 shadow-md shadow-indigo-950/5 p-8 lg:p-9 card-hover"
+            whileHover={reduceMotion ? undefined : { y: -3, transition: { type: 'spring', stiffness: 400, damping: 25 } }}
+            className="card-hover rounded-sm border-2 border-brand-ink/10 border-l-4 border-l-primary-500 bg-white p-8 shadow-md lg:p-9"
           >
-            <div className="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center mb-5 border border-indigo-100">
-              <Award className="w-6 h-6 text-indigo-600" aria-hidden />
+            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-sm border border-brand-ink/10 bg-brand-sand">
+              <Award className="h-6 w-6 text-brand-clay" aria-hidden />
             </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3 font-heading">Our Mission</h3>
-            <p className="text-slate-600 text-[15px] leading-relaxed mb-3">{about.mission.intro}</p>
-            <ul className="space-y-2 text-slate-600 text-[15px]">
+            <h3 className="mb-3 font-heading text-xl font-semibold text-brand-ink">Our Mission</h3>
+            <p className="mb-3 text-[15px] leading-relaxed text-brand-ink/75">{about.mission.intro}</p>
+            <ul className="space-y-2 text-[15px] text-brand-ink/75">
               {about.mission.points.map((point, i) => (
                 <li key={i} className="flex items-start gap-2">
-                  <ChevronRight className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" aria-hidden />
+                  <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-primary-600" aria-hidden />
                   <span>{point}</span>
                 </li>
               ))}
@@ -57,50 +56,49 @@ export default function About() {
           <motion.div
             variants={cardMotion}
             transition={reduceMotion ? { duration: 0.4 } : undefined}
-            whileHover={reduceMotion ? undefined : { y: -4, transition: { type: 'spring', stiffness: 400, damping: 25 } }}
-            className="glass-card rounded-2xl border-2 border-emerald-200/50 shadow-md shadow-emerald-900/5 p-8 lg:p-9 card-hover"
+            whileHover={reduceMotion ? undefined : { y: -3, transition: { type: 'spring', stiffness: 400, damping: 25 } }}
+            className="card-hover rounded-sm border-2 border-brand-ink/10 border-l-4 border-l-brand-clay bg-white p-8 shadow-md lg:p-9"
           >
-            <div className="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center mb-5 border border-emerald-100">
-              <Lightbulb className="w-6 h-6 text-emerald-700" aria-hidden />
+            <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-sm border border-brand-ink/10 bg-brand-mist">
+              <Lightbulb className="h-6 w-6 text-primary-700" aria-hidden />
             </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3 font-heading">Our Vision</h3>
-            <p className="text-slate-600 text-[15px] leading-relaxed">{about.vision.text}</p>
+            <h3 className="mb-3 font-heading text-xl font-semibold text-brand-ink">Our Vision</h3>
+            <p className="text-[15px] leading-relaxed text-brand-ink/75">{about.vision.text}</p>
           </motion.div>
         </motion.div>
 
-        {/* Intro with founder image */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
           variants={stagger}
-          className="mb-20 grid md:grid-cols-2 gap-12 items-center"
+          className="mb-20 grid items-center gap-12 md:grid-cols-2"
         >
           <div>
             <motion.p variants={cardMotion} className="section-eyebrow mb-3">
               About Us
             </motion.p>
-            <motion.h2 variants={cardMotion} className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 font-heading text-balance">
+            <motion.h2 variants={cardMotion} className="mb-6 max-w-xl text-balance font-heading text-3xl font-semibold text-brand-ink sm:text-4xl lg:text-5xl">
               Kasa wↄ Tumi – Words are Powerful
             </motion.h2>
-            <motion.p variants={cardMotion} className="text-lg text-slate-600 leading-relaxed mb-6">
+            <motion.p variants={cardMotion} className="mb-6 text-lg leading-relaxed text-brand-ink/75">
               {about.paragraphs[0]}
             </motion.p>
             <motion.div variants={cardMotion}>
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 text-indigo-700 font-bold hover:text-indigo-600 transition-colors duration-200 cursor-pointer group"
+                className="group inline-flex cursor-pointer items-center gap-2 font-bold text-link transition-colors hover:text-link-hover"
               >
                 Learn More About Us
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform duration-200" />
+                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" />
               </Link>
             </motion.div>
           </div>
           <motion.div
             variants={cardMotion}
-            whileHover={reduceMotion ? undefined : { scale: 1.02 }}
+            whileHover={reduceMotion ? undefined : { scale: 1.01 }}
             transition={{ type: 'spring', stiffness: 320, damping: 28 }}
-            className="relative rounded-2xl overflow-hidden shadow-xl shadow-indigo-950/15 ring-2 ring-white/50 aspect-[4/3]"
+            className="relative aspect-[4/3] overflow-hidden rounded-sm border-2 border-brand-ink/10 shadow-xl"
           >
             <Image
               src={teamMembers.founder.image}
@@ -109,14 +107,12 @@ export default function About() {
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
-            <div className="absolute inset-0 bg-black/40" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/75 via-brand-ink/25 to-transparent" />
           </motion.div>
         </motion.div>
 
-        {/* Objectives */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
@@ -127,10 +123,10 @@ export default function About() {
               key={i}
               variants={cardMotion}
               whileHover={reduceMotion ? undefined : { y: -3, transition: { type: 'spring', stiffness: 450, damping: 28 } }}
-              className="glass-card rounded-2xl border-2 border-slate-100/80 border-l-4 border-l-indigo-500 shadow-md hover:shadow-lg transition-shadow duration-300 p-6 lg:p-7"
+              className="rounded-sm border-2 border-brand-ink/10 border-l-4 border-l-primary-500 bg-white p-6 shadow-md transition-shadow hover:shadow-lg lg:p-7"
             >
-              <Target className="w-9 h-9 text-indigo-600 mb-4" aria-hidden />
-              <p className="text-slate-600 text-[15px] leading-relaxed">{item}</p>
+              <Target className="mb-4 h-9 w-9 text-brand-clay" aria-hidden />
+              <p className="text-[15px] leading-relaxed text-brand-ink/75">{item}</p>
             </motion.div>
           ))}
         </motion.div>

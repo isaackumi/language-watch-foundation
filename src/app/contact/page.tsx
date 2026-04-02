@@ -15,7 +15,7 @@ export default function ContactPage() {
       <div className="fixed left-4 top-24 z-40 sm:left-6">
         <Link
           href="/"
-          className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-indigo-200/80 bg-white/92 px-4 py-2.5 text-sm font-semibold text-indigo-900 shadow-lg shadow-indigo-950/10 backdrop-blur-md transition-all duration-200 hover:border-indigo-300 hover:bg-white"
+          className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-brand-ink/20 bg-white/92 px-4 py-2.5 text-sm font-semibold text-brand-ink shadow-lg shadow-brand-ink/10 backdrop-blur-md transition-all duration-200 hover:border-brand-clay/35 hover:bg-white"
         >
           <ArrowLeft className="h-4 w-4 shrink-0" aria-hidden />
           Back to Home
@@ -24,7 +24,7 @@ export default function ContactPage() {
 
       <section className="relative min-h-[40vh] overflow-hidden pt-8 sm:pt-10">
         <div
-          className="absolute inset-0 bg-gradient-to-br from-indigo-950 via-indigo-800 to-indigo-900 banner-jagged pointer-events-none"
+          className="absolute inset-0 bg-gradient-to-br from-brand-ink via-[#231c18] to-brand-ink banner-jagged pointer-events-none"
           aria-hidden
         />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_40%_at_0%_0%,rgba(99,102,241,0.35),transparent)]" />

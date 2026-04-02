@@ -9,6 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        brand: {
+          ink: '#14110f',
+          paper: '#f4efe4',
+          sand: '#e5ddd0',
+          mist: '#ebe4d6',
+          clay: '#b24a32',
+        },
         banner: '#FFDD67', // Warm yellow for banner (job posting aesthetic)
         primary: {
           50: '#FFF9E6',
@@ -35,13 +42,13 @@ const config: Config = {
           900: '#330000',
         },
         surface: {
-          DEFAULT: '#f4f2ff', // Cool lavender-white (design system base)
-          warm: '#fff8f0', // Warm cream band for alternation
-          light: '#faf8ff',
+          DEFAULT: '#f4efe4', // Warm paper (editorial base)
+          warm: '#e8e0d2',
+          light: '#faf7f0',
         },
         link: {
-          DEFAULT: '#4f46e5',
-          hover: '#4338ca',
+          DEFAULT: '#b24a32',
+          hover: '#8f3b28',
         },
         dark: {
           50: '#f5f5f4',
@@ -58,8 +65,18 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['var(--font-source-sans)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-lexend)', 'var(--font-source-sans)', 'system-ui', 'sans-serif'],
-        heading: ['var(--font-lexend)', 'var(--font-source-sans)', 'system-ui', 'sans-serif'],
+        display: [
+          'BagossCondensedFont',
+          'var(--font-source-sans)',
+          'system-ui',
+          'sans-serif',
+        ],
+        heading: [
+          'BagossCondensedFont',
+          'var(--font-source-sans)',
+          'system-ui',
+          'sans-serif',
+        ],
         bagoss: [
           'BagossCondensedFont',
           'BagossCondensedFont Fallback',

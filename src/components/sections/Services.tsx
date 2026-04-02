@@ -5,12 +5,7 @@ import { Mic, BookOpen, MessageCircle, GraduationCap, ArrowRight } from 'lucide-
 import { motion, useReducedMotion } from 'framer-motion'
 import Link from 'next/link'
 
-const iconMap = [
-  Mic,
-  BookOpen,
-  MessageCircle,
-  GraduationCap,
-]
+const iconMap = [Mic, BookOpen, MessageCircle, GraduationCap]
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }
 const fadeUpSpring = {
@@ -25,9 +20,9 @@ export default function Services({ hideHeader }: { hideHeader?: boolean } = {}) 
   const activities = siteContent.about.activities.items
 
   return (
-    <section id="services" className="relative py-24 lg:py-28 bg-surface-warm overflow-hidden">
-      <div className="absolute inset-0 opacity-[0.45] bg-[linear-gradient(120deg,#eef2ff_0%,transparent_40%,#ecfdf5_100%)] pointer-events-none" />
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="services" className="relative overflow-hidden bg-surface-warm py-24 lg:py-28">
+      <div className="pointer-events-none absolute inset-0 opacity-[0.55] bg-[linear-gradient(125deg,rgba(255,195,0,0.06)_0%,transparent_45%,rgba(178,74,50,0.05)_100%)]" />
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         {!hideHeader && (
           <motion.div
             initial="hidden"
@@ -39,17 +34,18 @@ export default function Services({ hideHeader }: { hideHeader?: boolean } = {}) 
             <motion.p variants={cardVariants} className="section-eyebrow mb-3">
               Our Activities & Services
             </motion.p>
-            <motion.h2 variants={cardVariants} className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 max-w-3xl font-heading text-balance">
+            <motion.h2 variants={cardVariants} className="mb-6 max-w-3xl text-balance font-heading text-3xl font-semibold text-brand-ink sm:text-4xl lg:text-5xl">
               What We Offer
             </motion.h2>
-            <motion.p variants={cardVariants} className="text-lg text-slate-600 leading-relaxed max-w-3xl">
-              From speaking clubs to SCEFFCOM CONSULT—our programs promote decorous language and effective communication for national peace and development.
+            <motion.p variants={cardVariants} className="max-w-3xl text-lg leading-relaxed text-brand-ink/75">
+              From speaking clubs to SCEFFCOM CONSULT—our programs promote decorous language and effective communication
+              for national peace and development.
             </motion.p>
           </motion.div>
         )}
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          className="grid grid-cols-1 gap-6 md:grid-cols-2"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
@@ -61,20 +57,20 @@ export default function Services({ hideHeader }: { hideHeader?: boolean } = {}) 
               <motion.div
                 key={item.title}
                 variants={cardVariants}
-                whileHover={reduceMotion ? undefined : { y: -5, transition: { type: 'spring', stiffness: 420, damping: 28 } }}
-                className="group glass-card rounded-2xl border-2 border-slate-100/90 border-t-4 border-t-emerald-500 shadow-md hover:shadow-xl transition-shadow duration-300 p-6 lg:p-8"
+                whileHover={reduceMotion ? undefined : { y: -4, transition: { type: 'spring', stiffness: 420, damping: 28 } }}
+                className="group rounded-sm border-2 border-brand-ink/10 border-t-4 border-t-primary-500 bg-white p-6 shadow-md transition-shadow hover:shadow-lg lg:p-8"
               >
-                <div className="w-12 h-12 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center mb-4 group-hover:bg-indigo-100/80 transition-colors duration-200">
-                  <Icon className="w-6 h-6 text-indigo-700" aria-hidden />
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-sm border border-brand-ink/10 bg-brand-sand transition-colors group-hover:bg-brand-mist">
+                  <Icon className="h-6 w-6 text-brand-clay" aria-hidden />
                 </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-3 font-heading">{item.title}</h3>
-                <p className="text-slate-600 text-[15px] leading-relaxed">{item.description}</p>
+                <h3 className="mb-3 font-heading text-lg font-semibold text-brand-ink">{item.title}</h3>
+                <p className="text-[15px] leading-relaxed text-brand-ink/75">{item.description}</p>
                 <Link
                   href="/contact"
-                  className="inline-flex cursor-pointer items-center gap-2 mt-5 text-indigo-700 font-semibold hover:text-emerald-700 transition-colors duration-200"
+                  className="mt-5 inline-flex cursor-pointer items-center gap-2 font-semibold text-link transition-colors hover:text-link-hover"
                 >
                   Get in touch
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="h-4 w-4" />
                 </Link>
               </motion.div>
             )

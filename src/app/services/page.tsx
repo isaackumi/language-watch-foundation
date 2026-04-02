@@ -24,7 +24,7 @@ export default function ServicesPage() {
       <div className="fixed left-4 top-24 z-40 sm:left-6">
         <Link
           href="/"
-          className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-indigo-200/80 bg-white/92 px-4 py-2.5 text-sm font-semibold text-indigo-900 shadow-lg shadow-indigo-950/10 backdrop-blur-md transition-all duration-200 hover:border-indigo-300 hover:bg-white"
+          className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-brand-ink/20 bg-white/92 px-4 py-2.5 text-sm font-semibold text-brand-ink shadow-lg shadow-brand-ink/10 backdrop-blur-md transition-all duration-200 hover:border-brand-clay/35 hover:bg-white"
         >
           <ArrowLeft className="h-4 w-4 shrink-0" aria-hidden />
           Back to Home
@@ -33,7 +33,7 @@ export default function ServicesPage() {
 
       <section className="relative min-h-[44vh] overflow-hidden pt-8 sm:pt-10">
         <div
-          className="absolute inset-0 bg-gradient-to-br from-indigo-950 via-indigo-800 to-indigo-900 banner-jagged pointer-events-none"
+          className="absolute inset-0 bg-gradient-to-br from-brand-ink via-[#231c18] to-brand-ink banner-jagged pointer-events-none"
           aria-hidden
         />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_40%_at_80%_0%,rgba(16,185,129,0.12),transparent)]" />
@@ -60,7 +60,7 @@ export default function ServicesPage() {
 
       <Services hideHeader />
 
-      <section className="border-t border-indigo-100/60 bg-gradient-to-br from-indigo-50/90 via-white to-emerald-50/40 py-20 lg:py-24">
+      <section className="border-t border-brand-ink/12 bg-gradient-to-br from-brand-sand/80 via-brand-paper to-primary-100/30 py-20 lg:py-24">
         <div className="container mx-auto px-4 text-center sm:px-6 lg:px-8">
           <motion.div {...viewAnim}>
             <p className="section-eyebrow mb-3">Next step</p>
@@ -71,14 +71,14 @@ export default function ServicesPage() {
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="/contact"
-                className="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-2xl bg-emerald-500 px-8 py-4 font-bold text-indigo-950 shadow-lg shadow-emerald-600/25 transition-all duration-200 hover:bg-emerald-400 sm:w-auto"
+                className="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-sm border-2 border-brand-ink/20 bg-primary-500 px-8 py-4 font-bold text-brand-ink shadow-lg shadow-primary-600/20 transition-all hover:bg-primary-400 sm:w-auto"
               >
                 Get in Touch
                 <ArrowRight className="h-5 w-5" aria-hidden />
               </Link>
               <Link
                 href="/about"
-                className="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-2xl border-2 border-indigo-200 bg-white px-8 py-4 font-semibold text-indigo-900 transition-colors duration-200 hover:bg-indigo-50 sm:w-auto"
+                className="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-sm border-2 border-brand-ink/20 bg-white px-8 py-4 font-semibold text-brand-ink transition-colors hover:bg-brand-sand sm:w-auto"
               >
                 About us
                 <ArrowRight className="h-5 w-5" aria-hidden />

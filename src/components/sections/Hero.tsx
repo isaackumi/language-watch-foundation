@@ -60,9 +60,9 @@ export default function Hero() {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Slider background + indigo block tint (design system) */}
+      {/* Slider + warm ink wash (editorial, not purple glass) */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 via-indigo-900 to-slate-900" />
+        <div className="absolute inset-0 bg-brand-ink" />
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
@@ -78,16 +78,11 @@ export default function Hero() {
             />
           </motion.div>
         </AnimatePresence>
-        <div className="absolute inset-0 bg-indigo-950/55" />
-        <div className="absolute inset-0 bg-gradient-to-t from-indigo-950/95 via-indigo-950/35 to-indigo-900/20" />
-        <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/25 via-transparent to-emerald-900/20" />
-        {/* Geometric blocks */}
+        <div className="absolute inset-0 bg-brand-ink/45" />
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-ink via-brand-ink/70 to-brand-ink/25" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-900/20 via-transparent to-brand-clay/15" />
         <div
-          className="absolute -right-16 top-1/4 h-44 w-44 rotate-12 rounded-3xl border-2 border-white/15 bg-white/5 backdrop-blur-sm hidden lg:block pointer-events-none"
-          aria-hidden
-        />
-        <div
-          className="absolute -left-10 bottom-1/3 h-32 w-32 -rotate-6 rounded-2xl border-2 border-emerald-400/20 bg-emerald-500/10 backdrop-blur-sm hidden md:block pointer-events-none"
+          className="pointer-events-none absolute bottom-0 left-0 top-0 hidden w-1 bg-gradient-to-b from-primary-400 via-primary-500 to-brand-clay md:block"
           aria-hidden
         />
       </div>
@@ -96,7 +91,7 @@ export default function Hero() {
       <button
         type="button"
         onClick={prevSlide}
-        className="hidden md:flex cursor-pointer absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/20 backdrop-blur-xl backdrop-saturate-150 border border-white/40 items-center justify-center text-white hover:bg-white/35 hover:border-white/55 shadow-lg ring-1 ring-white/15 transition-all duration-200"
+        className="absolute left-3 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-sm border border-white/35 bg-brand-ink/30 text-white backdrop-blur-sm transition-all hover:bg-brand-ink/50 md:flex"
         aria-label="Previous slide"
       >
         <ChevronLeft className="w-6 h-6" />
@@ -104,7 +99,7 @@ export default function Hero() {
       <button
         type="button"
         onClick={nextSlide}
-        className="hidden md:flex cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/20 backdrop-blur-xl backdrop-saturate-150 border border-white/40 items-center justify-center text-white hover:bg-white/35 hover:border-white/55 shadow-lg ring-1 ring-white/15 transition-all duration-200"
+        className="absolute right-3 top-1/2 z-20 hidden h-11 w-11 -translate-y-1/2 cursor-pointer items-center justify-center rounded-sm border border-white/35 bg-brand-ink/30 text-white backdrop-blur-sm transition-all hover:bg-brand-ink/50 md:flex"
         aria-label="Next slide"
       >
         <ChevronRight className="w-6 h-6" />
@@ -117,8 +112,8 @@ export default function Hero() {
             type="button"
             key={i}
             onClick={() => goToSlide(i)}
-            className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-              i === currentSlide ? 'bg-emerald-400 w-10 shadow-[0_0_12px_rgba(52,211,153,0.5)]' : 'w-2.5 bg-white/45 hover:bg-white/75'
+            className={`h-2 cursor-pointer rounded-sm transition-all duration-300 ${
+              i === currentSlide ? 'w-10 bg-primary-400 shadow-[0_0_14px_rgba(255,195,0,0.45)]' : 'w-2 bg-white/40 hover:bg-white/70'
             }`}
             aria-label={`Go to slide ${i + 1}`}
             aria-current={i === currentSlide ? 'true' : undefined}
@@ -138,31 +133,31 @@ export default function Hero() {
           >
             <motion.div
               variants={easeContent ? undefined : itemFade}
-              className="inline-flex items-center gap-2 glass-hero-pill rounded-full px-5 py-2.5 mb-8"
+              className="mb-8 inline-flex items-center gap-2 rounded-sm border border-brand-ink/25 bg-primary-500 px-4 py-2.5 shadow-lg sm:px-5"
             >
               <motion.span
                 aria-hidden
-                animate={reduceMotionFm ? undefined : { rotate: [0, 8, -4, 0] }}
+                animate={reduceMotionFm ? undefined : { rotate: [0, 6, -3, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               >
-                <Leaf className="w-5 h-5 text-emerald-300 shrink-0" />
+                <Leaf className="h-5 w-5 shrink-0 text-brand-ink/80" />
               </motion.span>
-              <span className="text-base font-semibold text-white tracking-tight drop-shadow-sm">
+              <span className="text-sm font-bold uppercase tracking-wide text-brand-ink sm:text-base">
                 Promoting Decorous Language for National Peace
               </span>
             </motion.div>
 
             <motion.h1
               variants={easeContent ? undefined : itemFade}
-              className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-6"
+              className="hero-title mb-6 max-w-[18ch] text-4xl sm:max-w-none sm:text-5xl md:text-6xl lg:text-7xl"
             >
               <span className="text-white">{siteContent.hero.title.split(' (')[0]}</span>
-              <span className="text-primary-300"> (LWF)</span>
+              <span className="text-primary-400"> (LWF)</span>
             </motion.h1>
 
             <motion.p
               variants={easeContent ? undefined : itemFade}
-              className="text-lg sm:text-xl text-white/95 mb-10 leading-relaxed max-w-2xl drop-shadow-md"
+              className="mb-10 max-w-2xl text-lg leading-relaxed text-stone-200 sm:text-xl"
             >
               {siteContent.hero.description}
             </motion.p>
@@ -174,7 +169,7 @@ export default function Hero() {
               <motion.div whileHover={reduceMotionFm ? undefined : { y: -3 }} whileTap={reduceMotionFm ? undefined : { scale: 0.98 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
                 <Link
                   href="/about"
-                  className="inline-flex cursor-pointer items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-primary-500 text-indigo-950 font-bold text-lg shadow-xl shadow-primary-500/30 hover:bg-primary-400 transition-colors duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-indigo-950"
+                  className="group inline-flex cursor-pointer items-center justify-center gap-2 rounded-sm border-2 border-brand-ink/20 bg-primary-500 px-8 py-4 text-lg font-bold text-brand-ink shadow-xl shadow-primary-600/25 transition-colors hover:bg-primary-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-ink"
                 >
                   <span>{siteContent.hero.ctaText}</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
@@ -183,7 +178,7 @@ export default function Hero() {
               <motion.div whileHover={reduceMotionFm ? undefined : { y: -3 }} whileTap={reduceMotionFm ? undefined : { scale: 0.98 }} transition={{ type: 'spring', stiffness: 400, damping: 25 }}>
                 <Link
                   href="/contact"
-                  className="inline-flex cursor-pointer items-center justify-center gap-2 px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-200 shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-indigo-950 bg-emerald-400/25 backdrop-blur-xl backdrop-saturate-150 text-white border-2 border-emerald-300/55 hover:bg-emerald-400/35 hover:border-emerald-200/70 ring-1 ring-white/20"
+                  className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-sm border-2 border-white/80 bg-transparent px-8 py-4 text-lg font-bold text-white shadow-lg transition-all hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-ink"
                 >
                   <MessageSquare className="w-5 h-5" />
                   <span>Contact Us</span>
@@ -204,15 +199,15 @@ export default function Hero() {
         <button
           type="button"
           onClick={handleScrollToAbout}
-          className="group cursor-pointer flex flex-col items-center gap-2 text-white/80 hover:text-white transition-colors duration-200 rounded-2xl px-4 py-2 bg-white/[0.08] backdrop-blur-md border border-white/20 hover:bg-white/15"
+          className="group flex cursor-pointer flex-col items-center gap-2 rounded-sm border border-white/25 bg-brand-ink/25 px-4 py-2 text-white/85 backdrop-blur-sm transition-colors hover:bg-brand-ink/40 hover:text-white"
         >
           <span className="text-sm font-semibold">Scroll to explore</span>
           <motion.div
             animate={reduceMotionFm ? undefined : { y: [0, 6, 0] }}
             transition={reduceMotionFm ? undefined : { duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-            className="w-6 h-8 border-2 border-white/45 rounded-full flex justify-center pt-2 bg-white/10 backdrop-blur-md shadow-inner"
+            className="flex h-8 w-6 justify-center rounded-sm border-2 border-white/40 bg-brand-ink/20 pt-2 shadow-inner"
           >
-            <div className="w-1 h-1.5 bg-white rounded-full" />
+            <div className="h-1.5 w-1 rounded-sm bg-primary-400" />
           </motion.div>
         </button>
       </motion.div>

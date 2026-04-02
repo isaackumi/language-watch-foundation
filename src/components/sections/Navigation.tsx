@@ -15,9 +15,7 @@ export default function Navigation() {
   const reduceMotion = useReducedMotion()
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 12)
     handleScroll()
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
@@ -36,182 +34,142 @@ export default function Navigation() {
     return pathname.startsWith(href.replace('/#', '/'))
   }
 
-  const isLightNav = isScrolled || pathname !== '/'
-
-  const linkTransition = reduceMotion
-    ? { duration: 0 }
-    : { type: 'spring' as const, stiffness: 420, damping: 28 }
+  /** Ink-on-paper bar once scrolled or off the home hero */
+  const isSolidBar = isScrolled || pathname !== '/'
 
   return (
-    <motion.nav
+    <motion.header
       aria-label="Main navigation"
-      /* x: -50% keeps bar centered — Tailwind -translate-x-1/2 is overridden by Framer transform */
-      initial={reduceMotion ? { x: '-50%' } : { opacity: 0, y: -16, x: '-50%' }}
-      animate={{
-        x: '-50%',
-        opacity: 1,
-        y: 0,
-        ...(reduceMotion
-          ? {}
-          : {
-              scale: isScrolled ? 0.995 : 1,
-            }),
-      }}
-      transition={{
-        opacity: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
-        x: { duration: 0.35, ease: [0.22, 1, 0.36, 1] },
-        y: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
-        scale: { type: 'spring', stiffness: 380, damping: 35 },
-      }}
+      initial={reduceMotion ? false : { y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
-        'fixed top-2 left-1/2 z-50 w-[min(95%,64rem)] max-w-5xl sm:top-4 rounded-2xl overflow-hidden',
-        isLightNav ? 'glass-nav-light' : 'glass-nav-dark'
+        'fixed left-0 right-0 top-0 z-50 transition-[background-color,border-color,box-shadow] duration-300',
+        isSolidBar
+          ? 'border-b-2 border-brand-ink/10 bg-brand-paper/95 shadow-[0_6px_30px_rgba(20,17,15,0.07)] backdrop-blur-sm'
+          : 'border-b border-white/15 bg-gradient-to-b from-brand-ink/40 to-transparent'
       )}
     >
-      <div className="px-4 py-3 sm:px-6 sm:py-3.5">
-        <div className="flex items-center justify-between gap-3 min-h-[3rem] sm:min-h-0">
-          <motion.div className="shrink-0 min-w-0 max-w-[45%] sm:max-w-none" whileHover={reduceMotion ? undefined : { scale: 1.02 }} whileTap={reduceMotion ? undefined : { scale: 0.98 }}>
-            <Link href="/" className="flex items-center gap-2 sm:gap-3 min-w-0">
-              <Image
-                src="/images/logo/nananom.jpg"
-                alt="Language Watch Foundation"
-                width={36}
-                height={36}
-                className="rounded-lg object-cover flex-shrink-0 sm:w-10 sm:h-10 ring-2 ring-white/40 shadow-md"
-              />
-              <span className={cn('font-bold tracking-tight truncate', isLightNav ? 'text-slate-900' : 'text-white drop-shadow-sm', 'text-base sm:text-xl')}>
-                <span className="sm:hidden">LWF</span>
-                <span className="hidden sm:inline">LANGUAGE WATCH (LWF)</span>
-              </span>
-            </Link>
-          </motion.div>
-
-          <div className="hidden md:flex items-center justify-end gap-1 lg:gap-1.5 flex-1 min-w-0 pl-4">
-            {navLinks.map((link) => (
-              <motion.div key={link.href} className="shrink-0" whileHover={reduceMotion ? undefined : { y: -1 }} transition={linkTransition}>
-                <Link
-                  href={link.href}
-                  className={cn(
-                    'relative px-3.5 py-2 rounded-full text-sm font-semibold transition-colors duration-200 cursor-pointer block whitespace-nowrap',
-                    isLightNav
-                      ? isActive(link.href)
-                        ? 'bg-indigo-500/20 text-indigo-900 shadow-sm ring-1 ring-indigo-200/60'
-                        : 'text-slate-600 hover:bg-white/55 hover:text-indigo-900'
-                      : isActive(link.href)
-                        ? 'bg-white/30 text-white ring-1 ring-white/50 shadow-[0_2px_12px_rgba(0,0,0,0.15)]'
-                        : 'text-white/92 hover:bg-white/18 hover:text-white'
-                  )}
-                >
-                  {link.name}
-                </Link>
-              </motion.div>
-            ))}
-            <motion.div className="shrink-0 ml-2 lg:ml-3" whileHover={reduceMotion ? undefined : { scale: 1.03 }} whileTap={reduceMotion ? undefined : { scale: 0.97 }} transition={linkTransition}>
-              <Link
-                href="/contact"
-                className={cn(
-                  'px-5 py-2.5 lg:px-6 rounded-full font-semibold text-sm cursor-pointer block shadow-lg transition-colors duration-200 whitespace-nowrap',
-                  isLightNav
-                    ? 'bg-emerald-500 text-indigo-950 hover:bg-emerald-400 ring-1 ring-white/50'
-                    : 'bg-emerald-400 text-indigo-950 hover:bg-emerald-300 ring-1 ring-white/30'
-                )}
-              >
-                Contact Us
-              </Link>
-            </motion.div>
-          </div>
-
-          <motion.button
-            type="button"
-            aria-expanded={isMobileMenuOpen}
-            aria-controls="mobile-menu"
-            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-            whileTap={reduceMotion ? undefined : { scale: 0.94 }}
-            className={cn(
-              'md:hidden p-2 rounded-xl transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center cursor-pointer',
-              isLightNav
-                ? 'text-slate-700 hover:bg-white/55 active:bg-white/70 ring-1 ring-slate-200/60'
-                : 'text-white hover:bg-white/20 active:bg-white/25 ring-1 ring-white/25'
-            )}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            <AnimatePresence mode="wait" initial={false}>
-              {isMobileMenuOpen ? (
-                <motion.span key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}>
-                  <X className="h-6 w-6" />
-                </motion.span>
-              ) : (
-                <motion.span key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.15 }}>
-                  <Menu className="h-6 w-6" />
-                </motion.span>
+      <nav className="container flex items-center justify-between gap-3 py-3 sm:py-3.5">
+        <motion.div className="min-w-0 shrink" whileHover={reduceMotion ? undefined : { scale: 1.01 }}>
+          <Link href="/" className="flex items-center gap-2.5 sm:gap-3">
+            <Image
+              src="/images/logo/nananom.jpg"
+              alt="Language Watch Foundation"
+              width={40}
+              height={40}
+              className={cn(
+                'h-9 w-9 shrink-0 rounded-md object-cover shadow-md ring-2 sm:h-10 sm:w-10',
+                isSolidBar ? 'ring-brand-ink/15' : 'ring-white/50'
               )}
-            </AnimatePresence>
-          </motion.button>
+            />
+            <span
+              className={cn(
+                'truncate font-heading text-base font-semibold tracking-tight sm:text-lg',
+                isSolidBar ? 'text-brand-ink' : 'text-white drop-shadow-md'
+              )}
+            >
+              <span className="sm:hidden">LWF</span>
+              <span className="hidden sm:inline">LANGUAGE WATCH (LWF)</span>
+            </span>
+          </Link>
+        </motion.div>
+
+        <div className="hidden items-center gap-0.5 md:flex md:flex-1 md:justify-end lg:gap-1">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={cn(
+                'border-b-2 px-3 py-2 text-sm font-semibold transition-colors',
+                isSolidBar
+                  ? isActive(link.href)
+                    ? 'border-primary-500 text-brand-ink'
+                    : 'border-transparent text-brand-ink/75 hover:text-brand-ink'
+                  : isActive(link.href)
+                    ? 'border-primary-400 text-white'
+                    : 'border-transparent text-white/90 hover:text-white'
+              )}
+            >
+              {link.name}
+            </Link>
+          ))}
+          <Link
+            href="/contact"
+            className={cn(
+              'ml-2 rounded-sm px-4 py-2.5 text-sm font-bold shadow-md transition-colors lg:ml-4',
+              isSolidBar
+                ? 'bg-primary-500 text-brand-ink hover:bg-primary-400'
+                : 'bg-primary-500 text-brand-ink hover:bg-primary-400 ring-1 ring-white/25'
+            )}
+          >
+            Contact
+          </Link>
         </div>
-      </div>
+
+        <button
+          type="button"
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-menu"
+          aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+          className={cn(
+            'flex min-h-[44px] min-w-[44px] items-center justify-center rounded-sm md:hidden',
+            isSolidBar
+              ? 'text-brand-ink ring-1 ring-brand-ink/15 hover:bg-brand-sand/80'
+              : 'text-white ring-1 ring-white/25 hover:bg-white/10'
+          )}
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          <AnimatePresence mode="wait" initial={false}>
+            {isMobileMenuOpen ? (
+              <motion.span key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}>
+                <X className="h-6 w-6" />
+              </motion.span>
+            ) : (
+              <motion.span key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.15 }}>
+                <Menu className="h-6 w-6" />
+              </motion.span>
+            )}
+          </AnimatePresence>
+        </button>
+      </nav>
 
       <AnimatePresence initial={false}>
         {isMobileMenuOpen && (
           <motion.div
             id="mobile-menu"
-            initial={reduceMotion ? { height: 0, opacity: 1 } : { height: 0, opacity: 0 }}
+            initial={reduceMotion ? { height: 0 } : { height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: reduceMotion ? 1 : 0 }}
-            transition={
-              reduceMotion
-                ? { duration: 0.2 }
-                : { height: { type: 'spring', stiffness: 320, damping: 32 }, opacity: { duration: 0.2 } }
-            }
-            className={cn('md:hidden overflow-hidden border-t', isLightNav ? 'border-indigo-200/40 bg-white/35 backdrop-blur-xl' : 'border-white/20 bg-white/[0.12] backdrop-blur-2xl')}
+            transition={reduceMotion ? { duration: 0.15 } : { height: { type: 'spring', stiffness: 320, damping: 32 } }}
+            className="overflow-hidden border-t border-brand-ink/10 bg-brand-paper md:hidden"
           >
-            <motion.div
-              initial={reduceMotion ? false : { opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2, delay: reduceMotion ? 0 : 0.05 }}
-              className="px-4 py-4 space-y-1 max-h-[70vh] overflow-y-auto"
-            >
+            <div className="container space-y-0.5 py-3">
               {navLinks.map((link, i) => (
-                <motion.div
-                  key={link.href}
-                  initial={reduceMotion ? false : { opacity: 0, x: -12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: reduceMotion ? 0 : 0.04 * i, type: 'spring', stiffness: 400, damping: 30 }}
-                >
+                <motion.div key={link.href} initial={reduceMotion ? false : { opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: reduceMotion ? 0 : 0.04 * i }}>
                   <Link
                     href={link.href}
                     className={cn(
-                    'flex items-center px-4 py-3.5 rounded-xl font-semibold min-h-[44px] transition-colors cursor-pointer',
-                    isLightNav
-                      ? isActive(link.href)
-                        ? 'bg-indigo-500/20 text-indigo-900 ring-1 ring-indigo-200/50'
-                        : 'text-slate-700 active:bg-white/60 hover:bg-white/45'
-                      : isActive(link.href)
-                        ? 'bg-white/30 text-white ring-1 ring-white/40'
-                        : 'text-white active:bg-white/20 hover:bg-white/15'
-                  )}
+                      'flex min-h-[48px] items-center rounded-sm px-4 py-3 font-semibold',
+                      isActive(link.href) ? 'bg-brand-sand text-brand-ink' : 'text-brand-ink/85 active:bg-brand-sand/70'
+                    )}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {link.name}
                   </Link>
                 </motion.div>
               ))}
-              <motion.div initial={reduceMotion ? false : { opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: reduceMotion ? 0 : 0.15, ...linkTransition }}>
-                <Link
-                  href="/contact"
-                  className={cn(
-                    'flex items-center justify-center px-4 py-3.5 rounded-xl font-semibold min-h-[44px] mt-2 cursor-pointer shadow-md',
-                    isLightNav ? 'bg-emerald-500 text-indigo-950 hover:bg-emerald-400' : 'bg-emerald-400 text-indigo-950 hover:bg-emerald-300'
-                  )}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Contact Us
-                </Link>
-              </motion.div>
-            </motion.div>
+              <Link
+                href="/contact"
+                className="mt-2 flex min-h-[48px] items-center justify-center rounded-sm bg-primary-500 px-4 py-3 font-bold text-brand-ink shadow-md"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Contact
+              </Link>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </motion.header>
   )
 }

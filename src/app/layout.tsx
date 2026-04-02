@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Lexend, Source_Sans_3 } from 'next/font/google'
+import { Source_Sans_3 } from 'next/font/google'
 import './globals.css'
 import { siteContent } from '@/data/content'
 import Navigation from '@/components/sections/Navigation'
@@ -12,13 +12,6 @@ const sourceSans = Source_Sans_3({
   variable: '--font-source-sans',
   display: 'swap',
   weight: ['400', '600', '700', '800', '900'],
-})
-
-const lexend = Lexend({
-  subsets: ['latin'],
-  variable: '--font-lexend',
-  display: 'swap',
-  weight: ['400', '500', '600', '700', '800'],
 })
 
 export const metadata: Metadata = {
@@ -70,11 +63,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${sourceSans.variable} ${lexend.variable}`}>
+    <html lang="en" className={sourceSans.variable}>
       <head>
         <link rel="icon" href="/images/logo/nananom.jpg" type="image/jpeg" />
         <link rel="apple-touch-icon" href="/images/logo/nananom.jpg" />
-        <meta name="theme-color" content="#4f46e5" />
+        <meta name="theme-color" content="#14110f" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className={`${sourceSans.className} antialiased`}>
@@ -82,7 +75,7 @@ export default function RootLayout({
         <JsonLd />
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-3 focus:bg-white focus:text-gray-900 focus:rounded-xl focus:shadow-lg focus:font-bold focus:outline-none focus:ring-2 focus:ring-primary-500"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-sm focus:bg-white focus:px-4 focus:py-3 focus:font-bold focus:text-brand-ink focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-brand-clay"
         >
           Skip to main content
         </a>
