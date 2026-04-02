@@ -15,7 +15,7 @@ export default function Navigation() {
   const reduceMotion = useReducedMotion()
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 12)
+    const handleScroll = () => setIsScrolled(window.scrollY > 8)
     handleScroll()
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
@@ -34,20 +34,15 @@ export default function Navigation() {
     return pathname.startsWith(href.replace('/#', '/'))
   }
 
-  /** Ink-on-paper bar once scrolled or off the home hero */
-  const isSolidBar = isScrolled || pathname !== '/'
-
   return (
     <motion.header
       aria-label="Main navigation"
-      initial={reduceMotion ? false : { y: -20, opacity: 0 }}
+      initial={reduceMotion ? false : { y: -16, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
-        'fixed left-0 right-0 top-0 z-50 transition-[background-color,border-color,box-shadow] duration-300',
-        isSolidBar
-          ? 'border-b-2 border-brand-ink/10 bg-brand-paper/95 shadow-[0_6px_30px_rgba(20,17,15,0.07)] backdrop-blur-sm'
-          : 'border-b border-white/15 bg-gradient-to-b from-brand-ink/40 to-transparent'
+        'fixed left-0 right-0 top-0 z-50 border-b bg-white/95 backdrop-blur-md transition-shadow duration-200',
+        isScrolled ? 'border-neutral-200 shadow-sm' : 'border-neutral-200/80'
       )}
     >
       <nav className="container flex items-center justify-between gap-3 py-3 sm:py-3.5">
@@ -58,17 +53,9 @@ export default function Navigation() {
               alt="Language Watch Foundation"
               width={40}
               height={40}
-              className={cn(
-                'h-9 w-9 shrink-0 rounded-md object-cover shadow-md ring-2 sm:h-10 sm:w-10',
-                isSolidBar ? 'ring-brand-ink/15' : 'ring-white/50'
-              )}
+              className="h-9 w-9 shrink-0 rounded-md object-cover ring-2 ring-neutral-200 sm:h-10 sm:w-10"
             />
-            <span
-              className={cn(
-                'truncate font-heading text-base font-semibold tracking-tight sm:text-lg',
-                isSolidBar ? 'text-brand-ink' : 'text-white drop-shadow-md'
-              )}
-            >
+            <span className="truncate font-heading text-base font-semibold tracking-tight text-neutral-950 sm:text-lg">
               <span className="sm:hidden">LWF</span>
               <span className="hidden sm:inline">LANGUAGE WATCH (LWF)</span>
             </span>
@@ -82,13 +69,9 @@ export default function Navigation() {
               href={link.href}
               className={cn(
                 'border-b-2 px-3 py-2 text-sm font-semibold transition-colors',
-                isSolidBar
-                  ? isActive(link.href)
-                    ? 'border-primary-500 text-brand-ink'
-                    : 'border-transparent text-brand-ink/75 hover:text-brand-ink'
-                  : isActive(link.href)
-                    ? 'border-primary-400 text-white'
-                    : 'border-transparent text-white/90 hover:text-white'
+                isActive(link.href)
+                  ? 'border-amber-600 text-neutral-950'
+                  : 'border-transparent text-neutral-600 hover:text-neutral-950'
               )}
             >
               {link.name}
@@ -96,12 +79,7 @@ export default function Navigation() {
           ))}
           <Link
             href="/contact"
-            className={cn(
-              'ml-2 rounded-sm px-4 py-2.5 text-sm font-bold shadow-md transition-colors lg:ml-4',
-              isSolidBar
-                ? 'bg-primary-500 text-brand-ink hover:bg-primary-400'
-                : 'bg-primary-500 text-brand-ink hover:bg-primary-400 ring-1 ring-white/25'
-            )}
+            className="ml-2 rounded-md bg-amber-500 px-4 py-2.5 text-sm font-bold text-neutral-950 shadow-sm ring-1 ring-amber-700/20 transition-colors hover:bg-amber-400 lg:ml-4"
           >
             Contact
           </Link>
@@ -112,12 +90,7 @@ export default function Navigation() {
           aria-expanded={isMobileMenuOpen}
           aria-controls="mobile-menu"
           aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-          className={cn(
-            'flex min-h-[44px] min-w-[44px] items-center justify-center rounded-sm md:hidden',
-            isSolidBar
-              ? 'text-brand-ink ring-1 ring-brand-ink/15 hover:bg-brand-sand/80'
-              : 'text-white ring-1 ring-white/25 hover:bg-white/10'
-          )}
+          className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-md text-neutral-900 ring-1 ring-neutral-200 hover:bg-neutral-100 md:hidden"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           <AnimatePresence mode="wait" initial={false}>
@@ -142,7 +115,7 @@ export default function Navigation() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: reduceMotion ? 1 : 0 }}
             transition={reduceMotion ? { duration: 0.15 } : { height: { type: 'spring', stiffness: 320, damping: 32 } }}
-            className="overflow-hidden border-t border-brand-ink/10 bg-brand-paper md:hidden"
+            className="overflow-hidden border-t border-neutral-200 bg-white md:hidden"
           >
             <div className="container space-y-0.5 py-3">
               {navLinks.map((link, i) => (
@@ -150,8 +123,8 @@ export default function Navigation() {
                   <Link
                     href={link.href}
                     className={cn(
-                      'flex min-h-[48px] items-center rounded-sm px-4 py-3 font-semibold',
-                      isActive(link.href) ? 'bg-brand-sand text-brand-ink' : 'text-brand-ink/85 active:bg-brand-sand/70'
+                      'flex min-h-[48px] items-center rounded-md px-4 py-3 font-semibold',
+                      isActive(link.href) ? 'bg-amber-50 text-neutral-950' : 'text-neutral-800 active:bg-neutral-100'
                     )}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
@@ -161,7 +134,7 @@ export default function Navigation() {
               ))}
               <Link
                 href="/contact"
-                className="mt-2 flex min-h-[48px] items-center justify-center rounded-sm bg-primary-500 px-4 py-3 font-bold text-brand-ink shadow-md"
+                className="mt-2 flex min-h-[48px] items-center justify-center rounded-md bg-amber-500 px-4 py-3 font-bold text-neutral-950 shadow-sm"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Contact

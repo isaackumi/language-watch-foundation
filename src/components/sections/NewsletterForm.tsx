@@ -63,7 +63,7 @@ export default function NewsletterForm() {
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="min-h-[52px] cursor-pointer rounded-sm border-2 border-brand-ink/30 bg-primary-500 px-8 py-4 font-bold text-brand-ink shadow-lg transition-all hover:bg-primary-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-ink disabled:cursor-not-allowed disabled:opacity-70"
+        className="min-h-[52px] cursor-pointer rounded-md border border-amber-800/30 bg-amber-500 px-8 py-4 font-bold text-neutral-950 shadow-sm transition-all hover:bg-amber-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 disabled:cursor-not-allowed disabled:opacity-70"
       >
         {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
       </button>

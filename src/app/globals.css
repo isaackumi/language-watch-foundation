@@ -97,7 +97,7 @@
   }
 
   body {
-    @apply bg-surface text-brand-ink font-sans;
+    @apply bg-white text-neutral-900 font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -140,7 +140,7 @@
   }
 
   .section-eyebrow {
-    @apply text-[11px] font-bold uppercase tracking-[0.22em] text-brand-clay;
+    @apply text-[11px] font-bold uppercase tracking-[0.22em] text-amber-900;
   }
 
   .gradient-bg {
@@ -269,16 +269,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #e8e0d2;
+  background: #f5f5f4;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #b24a32;
+  background: #a3a3a3;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #8f3b28;
+  background: #737373;
 }
 
 /* Loading animation */

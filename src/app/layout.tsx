@@ -67,7 +67,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/images/logo/nananom.jpg" type="image/jpeg" />
         <link rel="apple-touch-icon" href="/images/logo/nananom.jpg" />
-        <meta name="theme-color" content="#14110f" />
+        <meta name="theme-color" content="#ffffff" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className={`${sourceSans.className} antialiased`}>
@@ -75,11 +75,11 @@ export default function RootLayout({
         <JsonLd />
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-sm focus:bg-white focus:px-4 focus:py-3 focus:font-bold focus:text-brand-ink focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-brand-clay"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-white focus:px-4 focus:py-3 focus:font-bold focus:text-neutral-950 focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-amber-600"
         >
           Skip to main content
         </a>
-        <div className="min-h-screen bg-surface font-sans antialiased">
+        <div className="min-h-screen bg-white font-sans antialiased text-neutral-900">
           <Navigation />
           <div id="main-content" tabIndex={-1}>{children}</div>
           <Footer />

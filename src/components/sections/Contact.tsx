@@ -89,8 +89,8 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
   ]
 
   return (
-    <section id="contact" className="relative overflow-hidden bg-brand-paper py-24 font-sans text-brand-ink lg:py-28">
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(165deg,rgba(255,195,0,0.06)_0%,#f4efe4_50%,rgba(178,74,50,0.04)_100%)]" />
+    <section id="contact" className="relative overflow-hidden bg-neutral-50 py-24 font-sans text-neutral-900 lg:py-28">
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(165deg,rgba(251,191,36,0.06)_0%,#fafafa_55%,transparent_100%)]" />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section header */}
         {!hideHeader && (
@@ -106,10 +106,10 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
             className="mb-16"
           >
             <p className="section-eyebrow mb-3">Contact</p>
-            <h2 className="mb-6 max-w-3xl font-heading text-3xl font-semibold text-brand-ink text-balance sm:text-4xl lg:text-5xl">
+            <h2 className="mb-6 max-w-3xl font-heading text-3xl font-semibold text-neutral-950 text-balance sm:text-4xl lg:text-5xl">
               Get in touch
             </h2>
-            <p className="max-w-2xl text-lg leading-relaxed text-brand-ink/75">
+            <p className="max-w-2xl text-lg leading-relaxed text-neutral-700">
               For more information on our services, kindly get in touch using the following addresses and/or telephone numbers. Your comments and suggestions are also welcome.
             </p>
           </motion.div>
@@ -127,7 +127,7 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
                 : { type: 'spring', stiffness: 360, damping: 32, delay: 0.06 }
             }
             whileHover={reduceMotion ? undefined : { y: -2 }}
-            className="rounded-sm border-2 border-brand-ink/15 bg-white p-8 shadow-xl md:p-10 text-brand-ink"
+            className="rounded-md border border-neutral-200 bg-white p-8 shadow-sm md:p-10 text-neutral-900"
           >
             <form onSubmit={handleSubmit} className="space-y-5 font-sans">
               {formStatus === 'success' && (
@@ -164,8 +164,8 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
                   aria-invalid={!!errors.name}
                   aria-describedby={errors.name ? 'name-error' : undefined}
                   required
-                  className={`w-full rounded-sm border bg-white px-4 py-3 transition-colors focus:border-brand-clay focus:ring-2 focus:ring-brand-clay/20 ${
-                    errors.name ? 'border-red-500' : 'border-brand-ink/15'
+                  className={`w-full rounded-sm border bg-white px-4 py-3 transition-colors focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 ${
+                    errors.name ? 'border-red-500' : 'border-neutral-300'
                   }`}
                   placeholder="John Doe"
                 />
@@ -189,8 +189,8 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
                   aria-invalid={!!errors.email}
                   aria-describedby={errors.email ? 'email-error' : undefined}
                   required
-                  className={`w-full rounded-sm border bg-white px-4 py-3 transition-colors focus:border-brand-clay focus:ring-2 focus:ring-brand-clay/20 ${
-                    errors.email ? 'border-red-500' : 'border-brand-ink/15'
+                  className={`w-full rounded-sm border bg-white px-4 py-3 transition-colors focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 ${
+                    errors.email ? 'border-red-500' : 'border-neutral-300'
                   }`}
                   placeholder="john@example.com"
                 />
@@ -214,8 +214,8 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
                   aria-invalid={!!errors.subject}
                   aria-describedby={errors.subject ? 'subject-error' : undefined}
                   required
-                  className={`w-full rounded-sm border bg-white px-4 py-3 transition-colors focus:border-brand-clay focus:ring-2 focus:ring-brand-clay/20 ${
-                    errors.subject ? 'border-red-500' : 'border-brand-ink/15'
+                  className={`w-full rounded-sm border bg-white px-4 py-3 transition-colors focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 ${
+                    errors.subject ? 'border-red-500' : 'border-neutral-300'
                   }`}
                   placeholder="How can we help?"
                 />
@@ -239,8 +239,8 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
                   aria-describedby={errors.message ? 'message-error' : undefined}
                   required
                   rows={4}
-                  className={`w-full rounded-sm border bg-white px-4 py-3 transition-colors focus:border-brand-clay focus:ring-2 focus:ring-brand-clay/20 ${
-                    errors.message ? 'border-red-500' : 'border-brand-ink/15'
+                  className={`w-full rounded-sm border bg-white px-4 py-3 transition-colors focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 ${
+                    errors.message ? 'border-red-500' : 'border-neutral-300'
                   }`}
                   placeholder="Your message here..."
                 />
@@ -251,7 +251,7 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-sm border-2 border-brand-ink/25 bg-primary-500 px-6 py-4 font-bold text-brand-ink shadow-lg transition-all hover:bg-primary-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-clay focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-md border border-amber-700/25 bg-amber-500 px-6 py-4 font-bold text-neutral-950 shadow-sm transition-all hover:bg-amber-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <>Sending...</>
@@ -275,7 +275,7 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
                 ? { duration: 0.4, delay: 0.1 }
                 : { type: 'spring', stiffness: 360, damping: 32, delay: 0.12 }
             }
-            className="rounded-sm border-2 border-white/10 bg-brand-ink p-8 font-sans text-white shadow-xl md:p-10"
+            className="rounded-md border border-white/10 bg-neutral-900 p-8 font-sans text-white shadow-lg md:p-10"
           >
             <h3 className="text-xl font-bold text-white mb-8 font-heading tracking-tight">Contact Information</h3>
             <div className="space-y-6">

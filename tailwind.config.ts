@@ -10,11 +10,11 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          ink: '#14110f',
-          paper: '#f4efe4',
-          sand: '#e5ddd0',
-          mist: '#ebe4d6',
-          clay: '#b24a32',
+          ink: '#0a0a0a',
+          paper: '#ffffff',
+          sand: '#f5f5f4',
+          mist: '#f4f4f5',
+          clay: '#92400e',
         },
         banner: '#FFDD67', // Warm yellow for banner (job posting aesthetic)
         primary: {
@@ -42,13 +42,13 @@ const config: Config = {
           900: '#330000',
         },
         surface: {
-          DEFAULT: '#f4efe4', // Warm paper (editorial base)
-          warm: '#e8e0d2',
-          light: '#faf7f0',
+          DEFAULT: '#ffffff',
+          warm: '#f9fafb',
+          light: '#ffffff',
         },
         link: {
-          DEFAULT: '#b24a32',
-          hover: '#8f3b28',
+          DEFAULT: '#1d4ed8',
+          hover: '#1e40af',
         },
         dark: {
           50: '#f5f5f4',

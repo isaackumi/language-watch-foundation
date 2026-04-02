@@ -5,7 +5,7 @@ import NewsletterForm from './NewsletterForm'
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t-4 border-primary-500 bg-brand-ink text-brand-paper">
+    <footer className="relative overflow-hidden border-t-4 border-amber-500 bg-neutral-950 text-neutral-100">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_100%_80%_at_0%_100%,rgba(178,74,50,0.12),transparent_50%)]" />
       <div className="container relative z-10 mx-auto px-4 py-20 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-5">
@@ -21,7 +21,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Follow us on Facebook"
-                  className="flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center rounded-sm border border-white/15 bg-white/5 p-3 transition-colors hover:border-primary-500/50 hover:bg-primary-500 hover:text-brand-ink"
+                  className="flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center rounded-md border border-white/15 bg-white/5 p-3 text-white transition-colors hover:border-amber-400/50 hover:bg-amber-500 hover:text-neutral-950"
                 >
                   <Facebook className="h-6 w-6" />
                 </a>
@@ -32,7 +32,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Follow us on Twitter"
-                  className="flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center rounded-sm border border-white/15 bg-white/5 p-3 transition-colors hover:border-primary-500/50 hover:bg-primary-500 hover:text-brand-ink"
+                  className="flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center rounded-md border border-white/15 bg-white/5 p-3 text-white transition-colors hover:border-amber-400/50 hover:bg-amber-500 hover:text-neutral-950"
                 >
                   <Twitter className="h-6 w-6" />
                 </a>
@@ -43,7 +43,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Follow us on Instagram"
-                  className="flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center rounded-sm border border-white/15 bg-white/5 p-3 transition-colors hover:border-primary-500/50 hover:bg-primary-500 hover:text-brand-ink"
+                  className="flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center rounded-md border border-white/15 bg-white/5 p-3 text-white transition-colors hover:border-amber-400/50 hover:bg-amber-500 hover:text-neutral-950"
                 >
                   <Instagram className="h-6 w-6" />
                 </a>
@@ -54,7 +54,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Follow us on LinkedIn"
-                  className="flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center rounded-sm border border-white/15 bg-white/5 p-3 transition-colors hover:border-primary-500/50 hover:bg-primary-500 hover:text-brand-ink"
+                  className="flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center rounded-md border border-white/15 bg-white/5 p-3 text-white transition-colors hover:border-amber-400/50 hover:bg-amber-500 hover:text-neutral-950"
                 >
                   <Linkedin className="h-6 w-6" />
                 </a>
@@ -65,7 +65,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Subscribe on YouTube"
-                  className="flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center rounded-sm border border-white/15 bg-white/5 p-3 transition-colors hover:border-primary-500/50 hover:bg-primary-500 hover:text-brand-ink"
+                  className="flex min-h-[44px] min-w-[44px] cursor-pointer items-center justify-center rounded-md border border-white/15 bg-white/5 p-3 text-white transition-colors hover:border-amber-400/50 hover:bg-amber-500 hover:text-neutral-950"
                 >
                   <Youtube className="h-6 w-6" />
                 </a>
