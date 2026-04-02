@@ -22,6 +22,9 @@
 
 # misc
 .DS_Store
+
+# Cursor (local skills / rules; remove this line to commit .cursor/)
+.cursor/
 *.pem
 
 # debug
