@@ -64,19 +64,18 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['var(--font-source-sans)', 'system-ui', 'sans-serif'],
-        display: [
-          'BagossCondensedFont',
-          'var(--font-source-sans)',
+        sans: [
+          'ui-sans-serif',
           'system-ui',
+          '-apple-system',
+          'Segoe UI',
+          'Roboto',
+          'Helvetica Neue',
+          'Arial',
           'sans-serif',
         ],
-        heading: [
-          'BagossCondensedFont',
-          'var(--font-source-sans)',
-          'system-ui',
-          'sans-serif',
-        ],
+        display: ['BagossCondensedFont', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        heading: ['BagossCondensedFont', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         bagoss: [
           'BagossCondensedFont',
           'BagossCondensedFont Fallback',

@@ -107,7 +107,7 @@
   h2,
   h3,
   h4 {
-    font-family: BagossCondensedFont, var(--font-source-sans), system-ui, sans-serif;
+    font-family: BagossCondensedFont, ui-sans-serif, system-ui, sans-serif;
     letter-spacing: -0.03em;
   }
 
@@ -209,13 +209,13 @@
   }
 
   .stylish-title {
-    font-family: BagossCondensedFont, var(--font-source-sans), system-ui, sans-serif;
+    font-family: BagossCondensedFont, ui-sans-serif, system-ui, sans-serif;
     font-weight: 600;
     letter-spacing: -0.04em;
   }
 
   .hero-title {
-    font-family: BagossCondensedFont, var(--font-source-sans), system-ui, sans-serif;
+    font-family: BagossCondensedFont, ui-sans-serif, system-ui, sans-serif;
     font-weight: 600;
     font-size: clamp(2.35rem, 6vw, 3.85rem);
     letter-spacing: -0.045em;
@@ -224,7 +224,7 @@
 
   /* Long multilingual title — slightly lighter Bagoss */
   .hero-title-medium {
-    font-family: BagossCondensedFont, var(--font-source-sans), system-ui, sans-serif;
+    font-family: BagossCondensedFont, ui-sans-serif, system-ui, sans-serif;
     font-weight: 500;
     font-size: clamp(1.65rem, 4vw, 2.65rem);
     letter-spacing: -0.03em;
