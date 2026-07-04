@@ -53,6 +53,7 @@ export default function Services({ hideHeader }: { hideHeader?: boolean } = {}) 
         >
           {activities.map((item, i) => {
             const Icon = iconMap[i] || GraduationCap
+            const detailHref = 'href' in item && item.href ? item.href : null
             return (
               <motion.div
                 key={item.title}
@@ -65,13 +66,24 @@ export default function Services({ hideHeader }: { hideHeader?: boolean } = {}) 
                 </div>
                 <h3 className="mb-3 font-heading text-lg font-semibold text-neutral-950">{item.title}</h3>
                 <p className="text-[15px] leading-relaxed text-neutral-700">{item.description}</p>
-                <Link
-                  href="/contact"
-                  className="mt-5 inline-flex cursor-pointer items-center gap-2 font-semibold text-link transition-colors hover:text-link-hover"
-                >
-                  Get in touch
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
+                <div className="mt-5 flex flex-wrap gap-4">
+                  {detailHref && (
+                    <Link
+                      href={detailHref}
+                      className="inline-flex cursor-pointer items-center gap-2 font-semibold text-link transition-colors hover:text-link-hover"
+                    >
+                      Learn more
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  )}
+                  <Link
+                    href="/contact"
+                    className="inline-flex cursor-pointer items-center gap-2 font-semibold text-neutral-600 transition-colors hover:text-neutral-900"
+                  >
+                    Get in touch
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
               </motion.div>
             )
           })}

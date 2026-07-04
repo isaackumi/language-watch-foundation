@@ -167,7 +167,7 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
                   className={`w-full rounded-sm border bg-white px-4 py-3 transition-colors focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 ${
                     errors.name ? 'border-red-500' : 'border-neutral-300'
                   }`}
-                  placeholder="John Doe"
+                  placeholder="Kwame Mensah"
                 />
                 {errors.name && (
                   <p id="name-error" className="mt-1 text-sm text-red-600">{errors.name}</p>
@@ -192,7 +192,7 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
                   className={`w-full rounded-sm border bg-white px-4 py-3 transition-colors focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 ${
                     errors.email ? 'border-red-500' : 'border-neutral-300'
                   }`}
-                  placeholder="john@example.com"
+                  placeholder="kwame.mensah@gmail.com"
                 />
                 {errors.email && (
                   <p id="email-error" className="mt-1 text-sm text-red-600">{errors.email}</p>
@@ -217,7 +217,7 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
                   className={`w-full rounded-sm border bg-white px-4 py-3 transition-colors focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 ${
                     errors.subject ? 'border-red-500' : 'border-neutral-300'
                   }`}
-                  placeholder="How can we help?"
+                  placeholder="NAWA Language & Culture Learning Club registration"
                 />
                 {errors.subject && (
                   <p id="subject-error" className="mt-1 text-sm text-red-600">{errors.subject}</p>
@@ -242,7 +242,7 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
                   className={`w-full rounded-sm border bg-white px-4 py-3 transition-colors focus:border-blue-600 focus:ring-2 focus:ring-blue-500/25 ${
                     errors.message ? 'border-red-500' : 'border-neutral-300'
                   }`}
-                  placeholder="Your message here..."
+                  placeholder="I would like to register my child for NAWA-LCLC. Please share enrollment details."
                 />
                 {errors.message && (
                   <p id="message-error" className="mt-1 text-sm text-red-600">{errors.message}</p>

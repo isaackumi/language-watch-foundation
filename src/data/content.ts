@@ -63,12 +63,13 @@ export const siteContent = {
       title: "Other Activities & Services",
       items: [
         {
-          title: "Our Speaking Club (#Kasadɛ, Kasahwam, #YԑnhwԑYԑnKasaYie)",
-          description: "Speaking skills seminars are organized for club members. Members receive mediation and counseling services on use of sensitive/delicate utterances, effective communication in marriage & family life, work places, customer services/relations etc. (KASA - Word Therapy & Peace Outreach)"
+          title: "Our Speaking Club",
+          description: "Speaking skills seminars are organized for club members. Members receive mediation and counseling services on use of sensitive/delicate utterances, effective communication in marriage & family life, work places, customer services/relations etc. (#Kasadɛ, Kasahwam, #YԑnhwԑYԑnKasaYie — KASA Word Therapy & Peace Outreach)"
         },
         {
-          title: "NAWA Language & Culture Club - Efie Nimdeɛ Fie (Children & Youth)",
-          description: "Members are engaged in activities (such as reading, writing, role play) that encourage learning of their language (mother tongue), cultural values, etiquettes, politeness strategies and speaking skills in general."
+          title: "NAWA Language & Culture Learning Club",
+          description: "Efie Nimdeɛ Fie — register children, youth, and adults to learn mother tongue, cultural heritage, values, and polite communication. Ga, Twi, Ewe, Dagaare, Hausa, and more.",
+          href: "/nawa-language-culture-learning-club"
         },
         {
           title: "NAWA Public Lectures",
@@ -82,6 +83,51 @@ export const siteContent = {
     }
   },
 
+  nawaClub: {
+    path: "/nawa-language-culture-learning-club",
+    title: "NAWA Language & Culture Learning Club",
+    acronym: "NAWA-LCLC",
+    hashtag: "#Efie Nimdeɛ Fie",
+    tagline: "Efie Nimdeɛ Fie — Children, Youth & Adults",
+    logo: "/images/nawa-lclc-logo.png",
+    logoAlt: "NAWA Language & Culture Learning Club (NAWA-LCLC) logo — Efie Nimdeɛ Fie",
+    parentOrg: "Language Watch Foundation (LWF)",
+    welcome:
+      "Dear parents, we welcome you to register your children. Youth and Adults can also join us to learn more about our cultural heritage, identity, values and cultural economic benefits.",
+    homeLearning: {
+      title: "Home knowledge & wisdom learning activities",
+      items: [
+        "Speaking skills",
+        "Reading and writing of mother tongue",
+        "Cultural dance & traditional songs",
+        "Role play that encourage learning their cultural values, etiquette/polite behaviors, etc.",
+      ],
+    },
+    cognitiveProgram: {
+      title: "#Efie Nimdeɛ Fie for Cognitive Communication Development & Cultural Propriety",
+      languages: "Ga, Twi, Ewe, Dagaare, Hausa, etc.",
+    },
+    experiences: {
+      title: "Other exciting & interactive experience",
+      items: [
+        "Knowledge about traditional things in their homes and environment",
+        "Dramatisation of cultural practices",
+        "Visits to memorable cultural & historic sites & personalities, etc.",
+      ],
+    },
+    cta: "Register your child or join NAWA-LCLC",
+    contact: {
+      label: "Contact us",
+      phones: [
+        { display: "0542-997077", tel: "+233542997077" },
+        { display: "020-5134088", tel: "+233205134088" },
+      ],
+      audience: "For Children, Youth & Adults",
+      flyer: "/images/nawa-lclc-flyer.png",
+      flyerAlt: "NAWA-LCLC contact flyer — Efie Nimdeɛ Fie, phone numbers for registration",
+    },
+  },
+
   teamMembers: {
     intro: "In our quest to impart quality knowledge and impact positively on people's lives, we have a team of a competent workforce from diverse academic, experienced, and professional backgrounds. The team is supported by volunteers who have practical experience and formal training in the field of language use in everyday conversation and in the Media, Education, Communication Studies, Theatre Arts, Linguistics, Ghanaian Language Studies, etc. The founder is an experienced academic with vast experience in the media.",
     registeredNote: "Language Watch Foundation is registered under the laws of Ghana.",
@@ -93,19 +139,19 @@ export const siteContent = {
       image: "/images/doc.jpeg"
     },
     advisoryBoard: [
-      { name: "Professor Edwin Clifford Mensah", role: "Microeconomics, University of North Carolina, Pembroke" },
-      { name: "Prof. Reginald Duah", role: "Linguistics, University of Ghana, Legon" },
+      { name: "Professor Edwin Clifford Mensah", role: "Economist, Microeconomics, University of North Carolina, Pembroke" },
+      { name: "Professor Reginald Duah", role: "Linguistics, University of Ghana, Legon" },
       { name: "Okyeame Asumadu", role: "Chief Linguist of Bompata Ɔmanhene" },
       { name: "Rev. Minister Eric Osei-Assibey", role: "Power in the Word Advocate, Youth Welfare Activist and Educationist" },
       { name: "Reverend Cassandra Ackah", role: "Psychosocial & Certified Marriage Counselor, C.E.O of Cassy Productions, Ghana" },
-      { name: "Prof. Gladys Ansah", role: "Language and Communication Expert, University of Ghana, Legon" },
+      { name: "Professor Gladys Ansah", role: "Language and Communication Expert, University of Ghana, Legon" },
       { name: "Lawyer Afia Serwaa Esandoh", role: "Linguist & Law Lecturer" },
       { name: "Mrs Doreen Baffoe", role: "Marketing and Customer Service Expert" },
       { name: "Mrs. Rhoda Appiah", role: "Communication and Public Relations Expert" },
       { name: "Mrs. Ellen Boatemaa Denteh", role: "Chartered Accountant" }
     ],
     associateMembers: [
-      { name: "Prof. Kwasi Adomako", role: "Language Expert/Linguist, University of Education, Winneba" },
+      { name: "Professor Kwasi Adomako", role: "Language Expert/Linguist, University of Education, Winneba" },
       { name: "Mr. Bosiwa", role: "Language Expert/Linguist, University of Cape Coast" },
       { name: "Dr. Forson Adjei", role: "Language and Communication, University of Science and Technology, Kumase" },
       { name: "Dr. Emmanuel Antwi Fordjour", role: "Language and Communication, University of Science and Technology, Kumase" },
@@ -121,11 +167,10 @@ export const siteContent = {
       { role: "Programs & Development Manager", name: "Mrs Zita Asabea Gyampo" },
       { role: "Outreach, Media & Public Relations Team Lead", name: "Ms. Awo Asantewaa Wiafe-Akenten" },
       { role: "IT & Graphic Design Team Lead", name: "Mr. Isaac Kumi" },
-      { role: "Social Media Team", name: "Anabella Owusu, Marian Denzel" },
-      { role: "Content Creation Team", name: "Anabella Owusu" },
-      { role: "Data Mining Team", name: "Mr. Benjamin Opoku-Marfo, Emmanuella Owusu Snr." },
-      { role: "Research & Publications Team", name: "Mr. Kwabena Badu Amponsa, Ms Victoria Ofori, Mr. Mathias Sackitey, Mrs. Dorothy Sakyi, Mr. Cosmos Afram, Mr. Clinsman Odoom, Mr Barouk Eshun, Mr. Yakubu Mohammed, Mr. Nyame" },
-      { role: "Language & Translation Team", name: "Mr. Benjamin Opoku-Marfo, Emmanuella Owusu Snr, Anabella Owusu" }
+      { role: "Content Creation & Social Media Team Lead", name: "Mr. Joshua Agbeko" },
+      { role: "Data Mining Team Lead", name: "Marian Denzerl" },
+      { role: "Research & Publications Team", name: "Mr. Kwabena Badu Amponsa, Ms Victoria Ofori, Mr. Mathias Sackitey, Mrs. Dorothy Sakyi, Mr. Clinsman Odoom, Mr Barouk Eshun, Mr. Yakubu Mohammed, Mr. Nyame" },
+      { role: "Language & Translation Team Lead", name: "Mr. Cosmos Afram" }
     ],
     regionalLeaders: [
       { region: "Greater Accra", name: "Mr. Nicholas Agyei Atta" },
@@ -171,9 +216,9 @@ export const siteContent = {
       { name: "Terms of Service", href: "/terms" }
     ],
     services: [
-      { name: "Speaking Club", href: "/services" },
-      { name: "Language & Culture Club", href: "/services" },
-      { name: "Public Lectures", href: "/services" },
+      { name: "Our Speaking Club", href: "/services" },
+      { name: "NAWA Language & Culture Learning Club", href: "/nawa-language-culture-learning-club" },
+      { name: "NAWA Public Lectures", href: "/services" },
       { name: "SCEFFCOM CONSULT", href: "/services" }
     ]
   }
