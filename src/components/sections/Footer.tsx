@@ -1,5 +1,5 @@
 import { siteContent } from '@/data/content'
-import { Facebook, Twitter, Instagram, Linkedin, Youtube, Mail, Phone, MapPin } from 'lucide-react'
+import { Facebook, Twitter, Instagram, Linkedin, Youtube, Mail, Phone, MapPin, Globe } from 'lucide-react'
 import Link from 'next/link'
 import NewsletterForm from './NewsletterForm'
 
@@ -112,31 +112,46 @@ export default function Footer() {
               <li className="flex items-start gap-4">
                 <Phone className="mt-1 h-6 w-6 shrink-0 text-primary-400" />
                 <div className="space-y-2">
-                  <a
-                    href={`tel:${siteContent.contact.phone.replace(/\s/g, '')}`}
-                    className="block cursor-pointer text-lg font-semibold text-stone-200 transition-colors hover:text-primary-400"
-                  >
-                    {siteContent.contact.phone}
-                  </a>
                   {siteContent.contact.mobile.map((mobile) => (
                     <a
                       key={mobile}
                       href={`tel:${mobile.replace(/\s/g, '')}`}
-                      className="block cursor-pointer text-stone-400 transition-colors hover:text-primary-400"
+                      className="block cursor-pointer text-lg font-semibold text-stone-200 transition-colors hover:text-primary-400"
                     >
                       {mobile}
                     </a>
                   ))}
                 </div>
               </li>
-              <li className="flex items-center gap-4">
-                <Mail className="h-6 w-6 shrink-0 text-primary-400" />
-                <a
-                  href={`mailto:${siteContent.contact.email}`}
-                  className="cursor-pointer text-lg font-semibold text-stone-200 transition-colors hover:text-primary-400"
-                >
-                  {siteContent.contact.email}
-                </a>
+              <li className="flex items-start gap-4">
+                <Mail className="mt-1 h-6 w-6 shrink-0 text-primary-400" />
+                <div className="space-y-2">
+                  {siteContent.contact.emails.map((email) => (
+                    <a
+                      key={email}
+                      href={`mailto:${email}`}
+                      className="block cursor-pointer text-lg font-semibold text-stone-200 transition-colors hover:text-primary-400"
+                    >
+                      {email}
+                    </a>
+                  ))}
+                </div>
+              </li>
+              <li className="flex items-start gap-4">
+                <Globe className="mt-1 h-6 w-6 shrink-0 text-primary-400" />
+                <div className="space-y-2">
+                  {siteContent.contact.websites.map((site) => (
+                    <a
+                      key={site}
+                      href={site.startsWith('http') ? site : `https://${site}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block cursor-pointer text-lg font-semibold text-stone-200 transition-colors hover:text-primary-400"
+                    >
+                      {site}
+                    </a>
+                  ))}
+                </div>
               </li>
             </ul>
           </div>

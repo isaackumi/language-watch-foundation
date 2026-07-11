@@ -10,7 +10,7 @@ export default function JsonLd() {
     description: siteContent.meta.description,
     url: baseUrl,
     email: siteContent.contact.email,
-    telephone: siteContent.contact.phone.replace(/\s/g, ''),
+    telephone: siteContent.contact.mobile[0].replace(/\s/g, ''),
     address: {
       '@type': 'PostalAddress',
       streetAddress: siteContent.contact.location,
@@ -19,6 +19,8 @@ export default function JsonLd() {
       postalCode: 'LG 877',
     },
     sameAs: [
+      `https://${siteContent.contact.websites[0]}`,
+      `https://${siteContent.contact.websites[1]}`,
       siteContent.contact.social.facebook,
       siteContent.contact.social.twitter,
       siteContent.contact.social.instagram,

@@ -189,11 +189,13 @@ export const siteContent = {
   },
 
   contact: {
-    phone: "+233 0302 917 227",
-    mobile: ["+ 233 0542 997 077", "+ 233 0277 561 588"],
+    mobile: ["+ 233 0542 997 077", "+ 233 020 513 4088"],
     email: "languagewatch1@gmail.com",
+    emails: ["languagewatch1@gmail.com", "sceffcomconsult@gmail.com"],
     website: "languagewatchfoundation.org",
-    location: "Ayimensa-Kweiman Road, off MBC pharmacy. First Mango Farm junction, adjacent the Wind Mill. Onyame Na Ayԑ House.",
+    websites: ["languagewatchfoundation.org", "www.sceffcomconsult.org"],
+    location:
+      "Ayimensa-Kweiman Road, off MBC pharmacy. First Mango Farm junction, behind the Windmill.",
     address: "P. O. Box LG 877, Legon-Accra.",
     ceoContact: "+ 233 0542 99 7077",
     social: {

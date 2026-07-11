@@ -78,14 +78,36 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
+  const mapsUrl =
+    'https://maps.google.com/?q=Ayimensa-Kweiman+Road+behind+Windmill+Accra+Ghana'
+
   const contactInfo = [
-    { icon: Mail, title: 'Email', value: siteContent.contact.email, link: `mailto:${siteContent.contact.email}` },
-    { icon: Phone, title: 'Telephone', value: siteContent.contact.phone, link: `tel:${siteContent.contact.phone.replace(/\s/g, '')}` },
-    { icon: Phone, title: 'Mobile', value: siteContent.contact.mobile.join(', '), link: `tel:${siteContent.contact.mobile[0].replace(/\s/g, '')}` },
-    { icon: Globe, title: 'Website', value: siteContent.contact.website, link: `https://${siteContent.contact.website}` },
-    { icon: MapPin, title: 'Location', value: siteContent.contact.location, link: 'https://maps.google.com/?q=Onyame+Na+Ay%C4%9B+House+Ayimensa-Kweiman+Road+Accra' },
+    ...siteContent.contact.emails.map((email, i) => ({
+      icon: Mail,
+      title: i === 0 ? 'Email (LWF)' : 'Email (SCEFFCOM)',
+      value: email,
+      link: `mailto:${email}`,
+    })),
+    {
+      icon: Phone,
+      title: 'Mobile',
+      value: siteContent.contact.mobile.join(', '),
+      link: `tel:${siteContent.contact.mobile[0].replace(/\s/g, '')}`,
+    },
+    ...siteContent.contact.websites.map((site, i) => ({
+      icon: Globe,
+      title: i === 0 ? 'Website (LWF)' : 'Website (SCEFFCOM)',
+      value: site,
+      link: site.startsWith('http') ? site : `https://${site}`,
+    })),
+    { icon: MapPin, title: 'Location', value: siteContent.contact.location, link: mapsUrl },
     { icon: MapPin, title: 'Address', value: siteContent.contact.address, link: null },
-    { icon: Phone, title: 'C.E.O. Contact', value: siteContent.contact.ceoContact, link: `tel:${siteContent.contact.ceoContact.replace(/\s/g, '')}` },
+    {
+      icon: Phone,
+      title: 'C.E.O. Contact',
+      value: siteContent.contact.ceoContact,
+      link: `tel:${siteContent.contact.ceoContact.replace(/\s/g, '')}`,
+    },
   ]
 
   return (
@@ -306,7 +328,7 @@ export default function Contact({ hideHeader }: { hideHeader?: boolean } = {}) {
             </div>
             <div className="mt-8 border-t border-white/15 pt-8">
               <Link
-                href="https://maps.google.com/?q=Onyame+Na+Ay%C4%9B+House+Ayimensa-Kweiman+Road+Accra"
+                href="https://maps.google.com/?q=Ayimensa-Kweiman+Road+behind+Windmill+Accra+Ghana"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex cursor-pointer items-center gap-2 font-semibold text-primary-400 transition-colors hover:text-primary-300"
