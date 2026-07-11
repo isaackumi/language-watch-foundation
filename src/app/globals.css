@@ -2,48 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Bagoss Condensed */
+/* Bricolage Grotesque — local files (avoids Google Fonts build/runtime fetch issues) */
 @font-face {
-  font-family: 'BagossCondensedFont';
-  src: url('/fonts/bagoss-font-family/BagossCondensed-TRIAL-Thin.otf') format('opentype');
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'BagossCondensedFont';
-  src: url('/fonts/bagoss-font-family/BagossCondensed-TRIAL-Light.otf') format('opentype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'BagossCondensedFont';
-  src: url('/fonts/bagoss-font-family/BagossCondensed-TRIAL-Regular.otf') format('opentype');
+  font-family: 'Bricolage Grotesque';
+  src: url('/fonts/bricolage-grotesque/bricolage-grotesque-latin-400-normal.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'BagossCondensedFont';
-  src: url('/fonts/bagoss-font-family/BagossCondensed-TRIAL-Medium.otf') format('opentype');
+  font-family: 'Bricolage Grotesque';
+  src: url('/fonts/bricolage-grotesque/bricolage-grotesque-latin-500-normal.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'BagossCondensedFont';
-  src: url('/fonts/bagoss-font-family/BagossCondensed-TRIAL-SemiBold.otf') format('opentype');
+  font-family: 'Bricolage Grotesque';
+  src: url('/fonts/bricolage-grotesque/bricolage-grotesque-latin-600-normal.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'BagossCondensedFont';
-  src: url('/fonts/bagoss-font-family/BagossCondensed-TRIAL-Bold.otf') format('opentype');
+  font-family: 'Bricolage Grotesque';
+  src: url('/fonts/bricolage-grotesque/bricolage-grotesque-latin-700-normal.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
+}
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('/fonts/bricolage-grotesque/bricolage-grotesque-latin-800-normal.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-heading: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
@@ -107,7 +104,7 @@
   h2,
   h3,
   h4 {
-    font-family: BagossCondensedFont, ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-heading);
     letter-spacing: -0.03em;
   }
 
@@ -209,22 +206,22 @@
   }
 
   .stylish-title {
-    font-family: BagossCondensedFont, ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-heading);
     font-weight: 600;
     letter-spacing: -0.04em;
   }
 
   .hero-title {
-    font-family: BagossCondensedFont, ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-heading);
     font-weight: 600;
     font-size: clamp(2.35rem, 6vw, 3.85rem);
     letter-spacing: -0.045em;
     line-height: 1.02;
   }
 
-  /* Long multilingual title — slightly lighter Bagoss */
+  /* Long multilingual title — slightly lighter weight */
   .hero-title-medium {
-    font-family: BagossCondensedFont, ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-heading);
     font-weight: 500;
     font-size: clamp(1.65rem, 4vw, 2.65rem);
     letter-spacing: -0.03em;

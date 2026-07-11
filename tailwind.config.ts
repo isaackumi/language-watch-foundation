@@ -74,15 +74,9 @@ const config: Config = {
           'Arial',
           'sans-serif',
         ],
-        display: ['BagossCondensedFont', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        heading: ['BagossCondensedFont', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        bagoss: [
-          'BagossCondensedFont',
-          'BagossCondensedFont Fallback',
-          'Arial',
-          'Helvetica',
-          'sans-serif',
-        ],
+        display: ['Bricolage Grotesque', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        heading: ['Bricolage Grotesque', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        bagoss: ['Bricolage Grotesque', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       animation: {
         'fade-up': 'fadeUp 0.5s ease-out',
